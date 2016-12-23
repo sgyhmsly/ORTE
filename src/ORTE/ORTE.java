@@ -14,7 +14,7 @@ public class ORTE extends Application
 {
     public static void main(String args[])
     {
-
+        Logger.getInstance();
         launch(args);
     }
 

@@ -5,7 +5,7 @@ package ORTE;
  */
 public final class Logger
 {
-    private String logFilePath;
+    private String logFilePath = "";
     private static Logger instance = null;
     private Logger()
     {
