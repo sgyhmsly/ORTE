@@ -4,7 +4,7 @@ package ORTE;
  * Created by DT173 on 2016/12/23.
  */
 
-// test github
+
 public final class Logger
 {
     private String logFilePath = "";
@@ -21,5 +21,10 @@ public final class Logger
             instance = new Logger();
         }
         return instance;
+    }
+
+    public static void test()
+    {
+        ;
     }
 };
