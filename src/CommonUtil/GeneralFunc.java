@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by DT173 on 2016/12/26.
+ * The class is used for checking whether a object is empty of not.
  */
 public class GeneralFunc
 {
@@ -26,7 +26,7 @@ public class GeneralFunc
     }
     public static  boolean notEmpty(String oc)
     {
-        if(oc != "" && oc != null)
+        if(oc != null && oc.equals("") )
             return true;
         else
             return false;
