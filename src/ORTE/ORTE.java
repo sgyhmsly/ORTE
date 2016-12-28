@@ -5,6 +5,7 @@ import javafx.application.*;
 import javafx.scene.*;
 import javafx.stage.*;
 import javafx.scene.layout.*;
+import TestCases.*;
 
 
 
@@ -15,6 +16,7 @@ public class ORTE extends Application
 {
     public static void main(final String args[])
     {
+
         Logger.getInstance();
         launch(args);
     }

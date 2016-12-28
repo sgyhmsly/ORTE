@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ORTE:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ORTE_jar</output-path>
+    <root id="archive" name="ORTE.jar">
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/groovy.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/antlr.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/asm.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

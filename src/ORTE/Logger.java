@@ -33,8 +33,5 @@ public final class Logger
         return instance;
     }
 
-    public static void test()
-    {
-        ;
-    }
+
 };
