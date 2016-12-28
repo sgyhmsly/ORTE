@@ -7,14 +7,24 @@ package ORTE;
 
 public final class Logger
 {
-    private String logFilePath = "";
-    private static Logger instance = null;
+
+
+    private String logFilePath;
+    private static Logger instance;//NOPMD
+
     private Logger()
     {
         // Exists only to defeat instantiation.
-        logFilePath += DirectoryMgr.getWorkingDirectory()+"\\Logs";
+        logFilePath= DirectoryMgr.getWorkingDirectory()+"\\ORTE_Logs";
+
     }
-    public static Logger getInstance()
+
+    public String getLogFilePath()
+    {
+        return logFilePath;
+    }
+
+    public synchronized static Logger getInstance()
     {
         if (instance == null)
         {

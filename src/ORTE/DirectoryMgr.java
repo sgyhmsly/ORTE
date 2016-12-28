@@ -1,5 +1,5 @@
 package ORTE;
-import CommonUtil.GeneralFunc;
+
 
 import java.io.File;
 import java.net.URL;
@@ -7,7 +7,7 @@ import static CommonUtil.GeneralFunc.notEmpty;
 /**
  * Created by DT173 on 2016/12/23.
  */
-public class DirectoryMgr
+public final class DirectoryMgr
 {
     private static String workingDirectory = "";
     private DirectoryMgr(){;}
@@ -15,19 +15,20 @@ public class DirectoryMgr
     {
         try
         {
-            if (GeneralFunc.notEmpty(workingDirectory))
+            if (notEmpty(workingDirectory))
             {
-                String tempPath = DirectoryMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-                File tempFile = new File(tempPath);
+                final String tempPath = DirectoryMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+                final File tempFile = new File(tempPath);
                 workingDirectory = tempFile.getPath();
 
             }
-            return  workingDirectory;
+
         }
         catch (java.net.URISyntaxException uriEx)
         {
-            return "";
+            workingDirectory ="";
         }
+        return  workingDirectory;
 
     }
 }

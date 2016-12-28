@@ -5,23 +5,22 @@ import javafx.application.*;
 import javafx.scene.*;
 import javafx.stage.*;
 import javafx.scene.layout.*;
-import static CommonUtil.GeneralFunc.notEmpty;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
+
 
 import static javafx.application.Application.launch;
 
 public class ORTE extends Application
 {
-    public static void main(String args[])
+    public static void main(final String args[])
     {
         Logger.getInstance();
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage) throws Exception//NOPMD
     {
 
     }
