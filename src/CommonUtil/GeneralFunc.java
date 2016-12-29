@@ -9,26 +9,26 @@ import java.util.Map;
  */
 public class GeneralFunc
 {
-    public static  boolean notEmpty(final Collection oc)
+    public static  boolean isEmpty(final Collection oc)
     {
-        boolean isNotEmpty = false;//NOPMD
+        boolean bIsEmpty = true;//NOPMD
         if (oc != null && oc.size()!=0)
-            isNotEmpty = true;
-        return isNotEmpty;
+            bIsEmpty = false;
+        return bIsEmpty;
     }
 
-    public static  boolean notEmpty(final Map oc)
+    public static  boolean isEmpty(final Map oc)
     {
-        boolean isNotEmpty = false;//NOPMD
+        boolean bIsEmpty = true;//NOPMD
         if (oc != null && oc.size()!=0)
-            isNotEmpty = true;
-        return isNotEmpty;
+            bIsEmpty = false;
+        return bIsEmpty;
     }
-    public static  boolean notEmpty(final String oc)
+    public static  boolean isEmpty(final String oc)
     {
-        boolean isNotEmpty = false;//NOPMD
+        boolean bIsEmpty = true;//NOPMD
         if(oc != null && oc.equals("") )
-            isNotEmpty = true;
-        return isNotEmpty;
+            bIsEmpty = false;
+        return bIsEmpty;
     }
 }

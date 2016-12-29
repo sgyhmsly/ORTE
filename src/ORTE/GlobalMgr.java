@@ -6,7 +6,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import static CommonUtil.GeneralFunc.notEmpty;
+import javax.swing.JOptionPane;
+import static CommonUtil.GeneralFunc.isEmpty;
 import static CommonUtil.FileEncoding.getFileEncode;
 /**
  * Created by DT173 on 2016/12/29.
@@ -32,11 +33,13 @@ public final class GlobalMgr
     {
         try
         {
-            if (notEmpty(workingDirectory))
+            if (isEmpty(workingDirectory))
             {
                 final String tempPath = GlobalMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+
                 final File tempFile = new File(tempPath);
                 workingDirectory = tempFile.getPath();
+                JOptionPane.showMessageDialog( null , workingDirectory ,"title" , JOptionPane.ERROR_MESSAGE) ;
 
             }
 
@@ -71,6 +74,7 @@ public final class GlobalMgr
             e.printStackTrace();
         }
         mySimulator = new SimulatorProperties();
+        getWorkingDirectory();
 
     }
 

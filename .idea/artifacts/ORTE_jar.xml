@@ -2,9 +2,14 @@
   <artifact type="jar" name="ORTE:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/ORTE_jar</output-path>
     <root id="archive" name="ORTE.jar">
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/groovy.jar" path-in-jar="/" />
+      <element id="module-output" name="ORTE" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/antlr.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/hamcrest-core-1.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/asm.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/juniversalchardet-1.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/json-simple-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/groovy.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/junit-4.12.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
