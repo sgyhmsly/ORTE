@@ -15,7 +15,7 @@ public final class Logger
     private Logger()
     {
         // Exists only to defeat instantiation.
-        logFilePath= DirectoryMgr.getWorkingDirectory()+"\\ORTE_Logs";
+        logFilePath= GlobalMgr.getInstance().getWorkingDirectory()+"\\ORTE_Logs";
 
     }
 

@@ -11,7 +11,7 @@ import static CommonUtil.FileEncoding.getFileEncode;
 /**
  * Created by DT173 on 2016/12/29.
  */
-public class GlobalMgr
+public final class GlobalMgr
 {
     private String workingDirectory;
     private JSONObject  jsonObject;
@@ -34,7 +34,7 @@ public class GlobalMgr
         {
             if (notEmpty(workingDirectory))
             {
-                final String tempPath = DirectoryMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+                final String tempPath = GlobalMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
                 final File tempFile = new File(tempPath);
                 workingDirectory = tempFile.getPath();
 

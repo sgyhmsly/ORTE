@@ -13,12 +13,12 @@ import org.mozilla.universalchardet.UniversalDetector;
 public class FileEncoding
 {
 
-    public static String getFileEncode(File sourceFile)
+    public static String getFileEncode(File sourceFile) throws IOException
     {
         byte[] buf = new byte[4096];
 
         UniversalDetector detector;
-        java.io.FileInputStream fis;
+        java.io.FileInputStream fis =null;
         String encoding = "";
         try
         {
@@ -32,12 +32,16 @@ public class FileEncoding
             }
 
             detector.dataEnd();
-            if(fis != null)
-                fis.close();
+
             encoding = detector.getDetectedCharset();
         } catch (IOException e)
         {
             e.printStackTrace();
+        }
+        finally
+        {
+            if(fis != null)
+                fis.close();
         }
 
 
