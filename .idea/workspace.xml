@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="206d4ab6-ed53-49ad-9405-dd344b42bc38" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/CommonUtil/FileEncodingTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" afterPath="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,14 +63,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileEncoding.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileEncoding.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CommonUtil/FileEncoding.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="25" column="22" lean-forward="true" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+            <state relative-caret-position="204">
+              <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileEncodingTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/CommonUtil/FileEncodingTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,18 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="401">
               <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MySqlStep.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestCases/MySqlStep.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,6 +194,7 @@
         <option value="$PROJECT_DIR$/src/ORTE/GlobalMgr.java" />
         <option value="$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java" />
         <option value="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" />
+        <option value="$PROJECT_DIR$/tests/CommonUtil/FileEncodingTest.java" />
       </list>
     </option>
   </component>
@@ -287,6 +286,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORTE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORTE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -349,6 +362,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="CommonUtil" />
       <recent name="ORTE" />
       <recent name="TestCases" />
     </key>
@@ -357,7 +371,7 @@
       <recent name="groovy.util.GroovyTestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GlobalMgrTest.getSimulatorJdbcDriver">
+  <component name="RunManager" selected="JUnit.FileEncodingTest.getFileEncode">
     <configuration default="false" name="ORTE" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ORTE.ORTE" />
@@ -438,6 +452,32 @@
       <option name="PACKAGE_NAME" value="ORTE" />
       <option name="MAIN_CLASS_NAME" value="ORTE.GlobalMgrTest" />
       <option name="METHOD_NAME" value="getSimulatorJdbcDriver" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="FileEncodingTest.getFileEncode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="CommonUtil.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="ORTE" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="CommonUtil" />
+      <option name="MAIN_CLASS_NAME" value="CommonUtil.FileEncodingTest" />
+      <option name="METHOD_NAME" value="getFileEncode" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -840,18 +880,20 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.ORTE" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.GroovyStepTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.GroovyStepTest.execute" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.GlobalMgrTest.getSimulatorJdbcDriver" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FileEncodingTest.getFileEncode" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.GlobalMgrTest.getSimulatorJdbcDriver" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ORTE" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GroovyStepTest.execute" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.GroovyStepTest" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.FileEncodingTest.getFileEncode" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.GlobalMgrTest.getSimulatorJdbcDriver" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ORTE" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GroovyStepTest.execute" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.GroovyStepTest" />
       </list>
     </recent_temporary>
   </component>
@@ -884,7 +926,7 @@
       <workItem from="1483003067573" duration="6377000" />
       <workItem from="1483010256010" duration="66000" />
       <workItem from="1483010358295" duration="115000" />
-      <workItem from="1483010494259" duration="12749000" />
+      <workItem from="1483010494259" duration="13023000" />
     </task>
     <task id="LOCAL-00001" summary="test github">
       <created>1482559613927</created>
@@ -998,12 +1040,19 @@
       <option name="project" value="LOCAL" />
       <updated>1483074233227</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="remove useless import">
+      <created>1483074630168</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1483074630168</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.29 at 19h 02m 45s.xml">
-      <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
+    <history-entry file="FileEncodingTest_getFileEncode - 2016.12.30 at 13h 14m 30s.xml">
+      <configuration name="FileEncodingTest.getFileEncode" configurationId="JUnit" />
     </history-entry>
     <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.30 at 12h 24m 04s.xml">
       <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
@@ -1034,7 +1083,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56353000" />
+    <option name="totallyTimeSpent" value="56627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1093,7 +1142,8 @@
     <MESSAGE value="fix the Encoding class.  Return default utf-8" />
     <MESSAGE value="fix user name password const value" />
     <MESSAGE value="comment out test code" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment out test code" />
+    <MESSAGE value="remove useless import" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove useless import" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1121,8 +1171,14 @@
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/CommonUtil/FileEncodingTest.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1131,13 +1187,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CommonUtil/GeneralFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ORTE/ORTE.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1450,11 +1499,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CommonUtil/FileEncoding.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="25" column="22" lean-forward="true" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        <state relative-caret-position="204">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/CommonUtil/FileEncodingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
