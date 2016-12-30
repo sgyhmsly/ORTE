@@ -1,17 +1,16 @@
-package TestCases;
+package TestCases;//NOPMD
 
-import java.io.BufferedReader;
+
 import java.io.File;
-import java.io.FileReader;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+
 /**
  * Created by DT173 on 2016/12/28.
  */
 public abstract class AbstractStep
 {
-    private String stepName;
-    private String stepPath;
+    private final String stepName;
+    private final String stepPath;
 
 
     AbstractStep(final File stepFiles)
@@ -33,8 +32,8 @@ public abstract class AbstractStep
     }
 
     public abstract void execute();
-    public void preExecute()
-    {;}
-    public void afterExecute()
-    {;}
+    public void preExecute()//NOPMD
+    {}//NOPMD
+    public void afterExecute()//NOPMD
+    {}//NOPMD
 }

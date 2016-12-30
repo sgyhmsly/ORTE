@@ -1,4 +1,4 @@
-package TestCases;
+package TestCases;//NOPMD
 
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
@@ -13,7 +13,7 @@ import java.net.URL;
  */
 public class GroovyStep extends AbstractStep
 {
-    private GroovyScriptEngine groovyEngine;
+    private final GroovyScriptEngine groovyEngine;
     private final Binding groovyVariables;
     private final URL[] fileURL;
     public URL[] getURL()
@@ -41,11 +41,11 @@ public class GroovyStep extends AbstractStep
         }
         catch (groovy.util.ResourceException e)
         {
-            e.printStackTrace();
+            e.printStackTrace();//NOPMD
         }
         catch (groovy.util.ScriptException e)
         {
-            e.printStackTrace();
+            e.printStackTrace();//NOPMD
         }
     }
 }

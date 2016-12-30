@@ -1,13 +1,14 @@
-package ORTE;
+package ORTE;//NOPMD
 
 import java.io.*;
+import java.net.URISyntaxException;
 
-import org.json.simple.JSONArray;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import javax.swing.JOptionPane;
-import static CommonUtil.GeneralFunc.isEmpty;
+
+import static CommonUtil.GeneralFunc.ifEmpty;
 import static CommonUtil.FileEncoding.getFileEncode;
 /**
  * Created by DT173 on 2016/12/29.
@@ -16,86 +17,88 @@ public final class GlobalMgr
 {
     private String workingDirectory;
     private JSONObject  jsonObject;
-    private SimulatorProperties mySimulator;
+    private final SimulatorProperties mySimulator;
     private static GlobalMgr ourInstance = new GlobalMgr();
 
     public static GlobalMgr getInstance()
     {
         return ourInstance;
     }
+    private GlobalMgr()
+    {
+        mySimulator = new SimulatorProperties();
+        jsonObject = new JSONObject();
+        workingDirectory = "";
+    }
 
-    public Object getProjectFileProperty(String propertyName)
+
+    public String getWorkingDirectory() throws URISyntaxException
+    {
+        if (ifEmpty(workingDirectory))
+        {
+            final String tempPath = GlobalMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();//NOPMD
+
+            final File tempFile = new File(tempPath);
+            workingDirectory = tempFile.getPath();//NOPMD
+        }
+        return  workingDirectory;
+    }
+
+
+
+    public void importPropertyFile(final File jsonPropertyFile) throws IOException,ParseException,URISyntaxException
+    {
+
+        final JSONParser parser = new JSONParser();
+        final String localJsonFile = getWorkingDirectory()+"\\project.json";
+        final String fileEncode = getFileEncode(new File(localJsonFile));
+        final FileInputStream is = new FileInputStream(localJsonFile);//NOPMD
+        final InputStreamReader isr = new InputStreamReader(is, fileEncode);
+        final BufferedReader buffReader = new BufferedReader(isr);
+        jsonObject = (JSONObject)(parser.parse(buffReader));//NOPMD
+        updateSimulatorProperties();
+    }
+
+
+
+    public Object getProjectFileProperty(final String propertyName)
     {
         return jsonObject.get(propertyName);
     }
 
-    public String getWorkingDirectory()
-    {
-        try
-        {
-            if (isEmpty(workingDirectory))
-            {
-                final String tempPath = GlobalMgr.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-
-                final File tempFile = new File(tempPath);
-                workingDirectory = tempFile.getPath();
-                JOptionPane.showMessageDialog( null , workingDirectory ,"title" , JOptionPane.ERROR_MESSAGE) ;
-
-            }
-
-        }
-        catch (java.net.URISyntaxException uriEx)
-        {
-            workingDirectory ="";
-        }
-        return  workingDirectory;
-
-    }
-
-
-
-    private GlobalMgr()
-    {
-        JSONParser parser = new JSONParser();
-
-        try
-        {
-            String localJsonFile = getWorkingDirectory()+"\\project.json";
-            String fileEncode = getFileEncode(new File(localJsonFile));
-            FileInputStream is = new FileInputStream(localJsonFile);
-            InputStreamReader isr = new InputStreamReader(is, fileEncode);
-            BufferedReader buffReader = new BufferedReader(isr);
-            jsonObject = (JSONObject)(parser.parse(buffReader));
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        } catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
-        mySimulator = new SimulatorProperties();
-        getWorkingDirectory();
-
-    }
-
-
     public String getSimulatorJdbcDriver()
     {
-        return mySimulator.getJdbcDriver();
+        return mySimulator.getJdbcDriver(false);
     }
 
     public String getSimulatorJdbcURL()
     {
-        return mySimulator.getJdbcURL();
+        return mySimulator.getJdbcURL(false);
     }
+
     public String getSimulatorJdbcUser()
     {
-        return mySimulator.getJdbcUser();
+        return mySimulator.getJdbcUser(false);
     }
+
     public String getSimulatorJdbcPassword()
     {
-        return mySimulator.getJdbcPassword();
+        return mySimulator.getJdbcPassword(false);
     }
+
+    private void updateSimulatorProperties()
+    {
+        // Update all the simulator functions.
+        mySimulator.getJdbcDriver(true);
+        mySimulator.getJdbcPassword(true);
+        mySimulator.getJdbcURL(true);
+        mySimulator.getJdbcUser(true);
+    }
+
+
+
+
+
 
 
     private class SimulatorProperties
@@ -125,35 +128,32 @@ public final class GlobalMgr
 
 
 
-        public String getJdbcDriver()
+        public String getJdbcDriver(final boolean needUpdate)
         {
-            return getProperties(jdbcDriver,jdbcDriverStr);
+            if(needUpdate)//NOPMD
+                jdbcDriver =(String)getProjectFileProperty(jdbcDriverStr);
+            return jdbcDriver;
         }
 
-        public String getJdbcURL()
+        public String getJdbcURL(final boolean needUpdate)
         {
-            return getProperties(jdbcURL,jdbcURLStr);
+            if(needUpdate)//NOPMD
+                jdbcURL = (String)getProjectFileProperty(jdbcURLStr);
+            return jdbcURL;
         }
 
-        public String getJdbcUser()
+        public String getJdbcUser(final boolean needUpdate)
         {
-            return getProperties(jdbcUser,jdbcUserStr);
+            if(needUpdate)//NOPMD
+                jdbcUser = (String)getProjectFileProperty(jdbcUserStr);
+            return jdbcUser;
         }
-        public String getJdbcPassword()
+        public String getJdbcPassword(final boolean needUpdate)
         {
-            return getProperties(jdbcPassword,jdbcPasswordStr);
+            if(needUpdate)//NOPMD
+                jdbcPassword = (String)getProjectFileProperty(jdbcPasswordStr);
+            return jdbcPassword;
         }
-
-
-        private String getProperties(String outPut,String inputName)
-        {
-            if(outPut.equals(""))
-            {
-                outPut = (String)jsonObject.get(inputName);
-            }
-            return outPut;
-        }
-
 
     }
 

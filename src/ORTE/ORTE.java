@@ -12,23 +12,23 @@ import TestCases.*;
 
 import static javafx.application.Application.launch;
 
-public class ORTE extends Application
+public class ORTE extends Application//NOPMD
 {
     public static void main(final String args[])
     {
 
-        Logger.getInstance();
+
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception//NOPMD
-    {
+    {//NOPMD
 
     }
 
     // Override the init() method.
-    public void init() {
+    public void init() {//NOPMD
 
     }
 }

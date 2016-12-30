@@ -1,4 +1,4 @@
-package TestCases;
+package TestCases;//NOPMD
 
 import java.io.File;
 import java.sql.Connection;
@@ -17,7 +17,7 @@ public class MySqlStep extends AbstractStep
 
     @Override
     public void execute()
-    {
+    {//NOPMD
 
     }
 

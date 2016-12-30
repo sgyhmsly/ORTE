@@ -1,4 +1,4 @@
-package CommonUtil;
+package CommonUtil;//NOPMD
 
 
 import java.util.Collection;
@@ -8,26 +8,27 @@ import java.util.Map;
  * The class is used for checking whether a object is empty of not.
  */
 public class GeneralFunc
-{
-    public static  boolean isEmpty(final Collection oc)
+{//NOPMD
+    public static  boolean ifEmpty(final Collection oc)//NOPMD
     {
+
         boolean bIsEmpty = true;//NOPMD
-        if (oc != null && oc.size()!=0)
+        if (oc != null && oc.size()!=0)//NOPMD
             bIsEmpty = false;
         return bIsEmpty;
     }
 
-    public static  boolean isEmpty(final Map oc)
+    public static  boolean ifEmpty(final Map oc)//NOPMD
     {
         boolean bIsEmpty = true;//NOPMD
-        if (oc != null && oc.size()!=0)
+        if (oc != null && oc.size()!=0)//NOPMD
             bIsEmpty = false;
         return bIsEmpty;
     }
-    public static  boolean isEmpty(final String oc)
+    public static  boolean ifEmpty(final String oc)//NOPMD
     {
         boolean bIsEmpty = true;//NOPMD
-        if(oc != null && oc.equals("") )
+        if(oc != null && oc.equals("") )//NOPMD
             bIsEmpty = false;
         return bIsEmpty;
     }
