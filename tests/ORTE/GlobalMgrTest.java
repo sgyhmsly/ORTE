@@ -14,8 +14,8 @@ public class GlobalMgrTest
     @Test
     public void importPropertyFile() throws Exception
     {
-        GlobalMgr oMgr = GlobalMgr.getInstance();
-        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
+//        GlobalMgr oMgr = GlobalMgr.getInstance();
+//        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
     }
 
     @Test
@@ -28,9 +28,9 @@ public class GlobalMgrTest
     @Test
     public void getSimulatorJdbcDriver() throws Exception
     {
-        GlobalMgr oMgr = GlobalMgr.getInstance();
-        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
-        String tempStr = oMgr.getSimulatorJdbcDriver();
+//        GlobalMgr oMgr = GlobalMgr.getInstance();
+//        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
+//        String tempStr = oMgr.getSimulatorJdbcDriver();
 
     }
 
