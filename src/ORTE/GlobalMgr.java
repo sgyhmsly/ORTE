@@ -120,8 +120,8 @@ public final class GlobalMgr
             jdbcPassword = "";
             jdbcDriverStr = "simulator.jdbc.driver";
             jdbcURLStr = "simulator.jdbc.jdbcUrl";
-            jdbcUserStr = "root";
-            jdbcPasswordStr = "Elekchina123!";
+            jdbcUserStr = "simulator.jdbc.user";
+            jdbcPasswordStr = "simulator.jdbc.password";
 
         }
 

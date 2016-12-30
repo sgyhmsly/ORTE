@@ -8,10 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="206d4ab6-ed53-49ad-9405-dd344b42bc38" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ORTE.iml" afterPath="$PROJECT_DIR$/ORTE.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" afterPath="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ORTE/GlobalMgr.java" afterPath="$PROJECT_DIR$/src/ORTE/GlobalMgr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java" afterPath="$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +40,8 @@
       <file leaf-file-name="GlobalMgr.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ORTE/GlobalMgr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="163">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1870#1871#0" expanded="true" />
@@ -57,8 +54,8 @@
       <file leaf-file-name="GlobalMgrTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            <state relative-caret-position="180">
+              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -195,8 +192,8 @@
         <option value="$PROJECT_DIR$/src/CommonUtil/GeneralFunc.java" />
         <option value="$PROJECT_DIR$/src/ORTE/ORTE.java" />
         <option value="$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java" />
-        <option value="$PROJECT_DIR$/src/ORTE/GlobalMgr.java" />
         <option value="$PROJECT_DIR$/src/CommonUtil/FileEncoding.java" />
+        <option value="$PROJECT_DIR$/src/ORTE/GlobalMgr.java" />
       </list>
     </option>
   </component>
@@ -885,7 +882,7 @@
       <workItem from="1483003067573" duration="6377000" />
       <workItem from="1483010256010" duration="66000" />
       <workItem from="1483010358295" duration="115000" />
-      <workItem from="1483010494259" duration="12153000" />
+      <workItem from="1483010494259" duration="12295000" />
     </task>
     <task id="LOCAL-00001" summary="test github">
       <created>1482559613927</created>
@@ -978,16 +975,17 @@
       <option name="project" value="LOCAL" />
       <updated>1483068794392</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix the Encoding class.  Return default utf-8">
+      <created>1483074042789</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1483074042789</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.29 at 18h 50m 03s.xml">
-      <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.29 at 18h 50m 49s.xml">
-      <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.29 at 19h 02m 45s.xml">
       <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
     </history-entry>
@@ -1012,13 +1010,19 @@
     <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.30 at 13h 00m 07s.xml">
       <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.30 at 13h 02m 21s.xml">
+      <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GlobalMgrTest_getSimulatorJdbcDriver - 2016.12.30 at 13h 02m 37s.xml">
+      <configuration name="GlobalMgrTest.getSimulatorJdbcDriver" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55757000" />
+    <option name="totallyTimeSpent" value="55899000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1032,7 +1036,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39869988" sideWeight="0.46801707" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39869988" sideWeight="0.46801707" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.47014925" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1070,7 +1074,8 @@
     <MESSAGE value="delete directory mgr" />
     <MESSAGE value="add jars" />
     <MESSAGE value="fix almost all pmd problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix almost all pmd problems" />
+    <MESSAGE value="fix the Encoding class.  Return default utf-8" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the Encoding class.  Return default utf-8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1429,8 +1434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ORTE/GlobalMgr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="163">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1870#1871#0" expanded="true" />
@@ -1441,8 +1446,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/ORTE/GlobalMgrTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        <state relative-caret-position="180">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
