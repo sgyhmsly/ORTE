@@ -15,18 +15,17 @@ public class FileEncoding
 
     public static String getFileEncode(final File sourceFile) throws IOException
     {
-        byte[] buf = new byte[4096];
+        final byte[] buf = new byte[4096];
 
-        UniversalDetector detector = new UniversalDetector(null);
-        java.io.FileInputStream fis =null;
-        fis = new java.io.FileInputStream(sourceFile);
+        final UniversalDetector detector = new UniversalDetector(null);
+        final java.io.FileInputStream fis = new java.io.FileInputStream(sourceFile);
 
 
         int nRead;
         while ((nRead = fis.read(buf)) > 0 && !detector.isDone()) {//NOPMD
             detector.handleData(buf, 0, nRead);//NOPMD
         }
-        fis.close();
+        fis.close();//NOPMD
         detector.dataEnd();//NOPMD
 
 
