@@ -1,48 +1,54 @@
-package ORTE;//NOPMD
+package ORTE;
 
 import org.junit.Test;
+
+import java.io.File;
 
 import static org.junit.Assert.*;
 
 /**
- * Created by DT173 on 2016/12/29.
+ * Created by DT173 on 2016/12/30.
  */
-public class GlobalMgrTest//NOPMD
+public class GlobalMgrTest
 {
     @Test
-    public void getProjectFileProperty() throws Exception//NOPMD
-    {//NOPMD
-
-    }
-
-    @Test
-    public void getWorkingDirectory() throws Exception//NOPMD
-    {//NOPMD
-
-    }
-
-    @Test
-    public void getSimulatorJdbcDriver() throws Exception//NOPMD
+    public void importPropertyFile() throws Exception
     {
-        GlobalMgr oGlobal = GlobalMgr.getInstance();//NOPMD
-        String oDriver = oGlobal.getSimulatorJdbcDriver();//NOPMD
+        GlobalMgr oMgr = GlobalMgr.getInstance();
+        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
     }
 
     @Test
-    public void getSimulatorJdbcURL() throws Exception//NOPMD
-    {//NOPMD
+    public void getProjectFileProperty() throws Exception
+    {
 
-    }
-
-    @Test
-    public void getSimulatorJdbcUser() throws Exception//NOPMD
-    {//NOPMD
 
     }
 
     @Test
-    public void getSimulatorJdbcPassword() throws Exception//NOPMD
-    {//NOPMD
+    public void getSimulatorJdbcDriver() throws Exception
+    {
+        GlobalMgr oMgr = GlobalMgr.getInstance();
+        oMgr.importPropertyFile(new File("d:\\sampleProject\\ORTE\\ORTEChoiceRes\\project.json"));
+        String tempStr = oMgr.getSimulatorJdbcDriver();
+
+    }
+
+    @Test
+    public void getSimulatorJdbcURL() throws Exception
+    {
+
+    }
+
+    @Test
+    public void getSimulatorJdbcUser() throws Exception
+    {
+
+    }
+
+    @Test
+    public void getSimulatorJdbcPassword() throws Exception
+    {
 
     }
 

@@ -50,9 +50,8 @@ public final class GlobalMgr
     {
 
         final JSONParser parser = new JSONParser();
-        final String localJsonFile = getWorkingDirectory()+"\\project.json";
-        final String fileEncode = getFileEncode(new File(localJsonFile));
-        final FileInputStream is = new FileInputStream(localJsonFile);//NOPMD
+        final String fileEncode = getFileEncode(jsonPropertyFile);
+        final FileInputStream is = new FileInputStream(jsonPropertyFile);//NOPMD
         final InputStreamReader isr = new InputStreamReader(is, fileEncode);
         final BufferedReader buffReader = new BufferedReader(isr);
         jsonObject = (JSONObject)(parser.parse(buffReader));//NOPMD

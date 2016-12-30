@@ -1,10 +1,11 @@
 package CommonUtil;//NOPMD
 
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
+import java.nio.charset.Charset;
 import org.mozilla.universalchardet.UniversalDetector;
-
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 /**
@@ -12,24 +13,40 @@ import org.mozilla.universalchardet.UniversalDetector;
  */
 public class FileEncoding
 {//NOPMD
-
+    public static final String DEFAULT_ENCODING = "UTF-8";
     public static String getFileEncode(final File sourceFile) throws IOException
     {
         final byte[] buf = new byte[4096];
+        FileInputStream  fis = null;
+        String encoding =null;
+        try
+        {
+            fis = new FileInputStream(sourceFile);
+            final UniversalDetector detector = new UniversalDetector(null);
 
-        final UniversalDetector detector = new UniversalDetector(null);
-        final java.io.FileInputStream fis = new java.io.FileInputStream(sourceFile);
+            int nread;
+            while ((nread = fis.read(buf)) > 0 && !detector.isDone())
+                detector.handleData(buf, 0, nread);
 
+            detector.dataEnd();
+            encoding = detector.getDetectedCharset();
 
-        int nRead;
-        while ((nRead = fis.read(buf)) > 0 && !detector.isDone()) {//NOPMD
-            detector.handleData(buf, 0, nRead);//NOPMD
+            if (encoding == null)
+                encoding = DEFAULT_ENCODING;
         }
-        fis.close();//NOPMD
-        detector.dataEnd();//NOPMD
+
+        finally
+        {
+            if(fis !=null)
+                fis.close();
 
 
-        return detector.getDetectedCharset();//NOPMD
+        }
 
+
+
+        return encoding;
     }
+
+
 }
