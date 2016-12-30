@@ -1,11 +1,10 @@
 package CommonUtil;//NOPMD
 
 import java.io.*;
-import java.nio.charset.Charset;
 import org.mozilla.universalchardet.UniversalDetector;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 
 /**
@@ -42,8 +41,6 @@ public class FileEncoding
 
 
         }
-
-
 
         return encoding;
     }
