@@ -11,15 +11,24 @@ public abstract class AbstractStep
 {
     private final String stepName;
     private final String stepPath;
-
+    private boolean ifSuccess;
 
     AbstractStep(final File stepFiles)
     {
         this.stepName = stepFiles.getName();
         this.stepPath = stepFiles.getPath();
-
+        ifSuccess = true;
     }
 
+    public boolean getExecuteResult()
+    {
+        return ifSuccess;
+    }
+
+    public void setExecuteResult(boolean result)
+    {
+        ifSuccess = result;
+    }
 
     public String getStepName()
     {
@@ -31,7 +40,7 @@ public abstract class AbstractStep
         return stepPath;
     }
 
-    public abstract void execute();
+    public abstract void execute() throws Exception;
     public void preExecute()//NOPMD
     {}//NOPMD
     public void afterExecute()//NOPMD

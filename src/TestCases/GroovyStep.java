@@ -2,6 +2,8 @@ package TestCases;//NOPMD
 
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
+import groovy.util.ResourceException;
+import groovy.util.ScriptException;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -31,21 +33,16 @@ public class GroovyStep extends AbstractStep
     }
 
     @Override
-    public void execute()
+    public void execute() throws ResourceException,ScriptException
     {
-
-
         try
         {
             groovyEngine.run(getStepName(), groovyVariables);
-        }
-        catch (groovy.util.ResourceException e)
+        } catch (ResourceException|ScriptException e)
         {
-            e.printStackTrace();//NOPMD
+            this.setExecuteResult(false);
+            throw e;
         }
-        catch (groovy.util.ScriptException e)
-        {
-            e.printStackTrace();//NOPMD
-        }
+
     }
 }

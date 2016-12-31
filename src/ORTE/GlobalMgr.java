@@ -4,12 +4,18 @@ import java.io.*;
 import java.net.URISyntaxException;
 
 
+import ORTEExceptions.DbQueryStringEmptyException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import static CommonUtil.GeneralFunc.ifEmpty;
 import static CommonUtil.FileEncoding.getFileEncode;
+
+
+import ORTEExceptions.DbNameEmptyException;
+import ORTEExceptions.DbQueryStringEmptyException;
+
 /**
  * Created by DT173 on 2016/12/29.
  */
@@ -17,7 +23,7 @@ public final class GlobalMgr
 {
     private String workingDirectory;
     private JSONObject  jsonObject;
-    private final SimulatorProperties mySimulator;
+    private final DbProperties dbProperties;
     private static GlobalMgr ourInstance = new GlobalMgr();
 
     public static GlobalMgr getInstance()
@@ -26,13 +32,13 @@ public final class GlobalMgr
     }
     private GlobalMgr()
     {
-        mySimulator = new SimulatorProperties();
+        dbProperties = new DbProperties();
         jsonObject = new JSONObject();
         workingDirectory = "";
     }
 
 
-    public String getWorkingDirectory() throws URISyntaxException
+    public String generateWorkingDirectory() throws URISyntaxException
     {
         if (ifEmpty(workingDirectory))
         {
@@ -44,8 +50,6 @@ public final class GlobalMgr
         return  workingDirectory;
     }
 
-
-
     public void importPropertyFile(final File jsonPropertyFile) throws IOException,ParseException,URISyntaxException
     {
 
@@ -55,103 +59,93 @@ public final class GlobalMgr
         final InputStreamReader isr = new InputStreamReader(is, fileEncode);
         final BufferedReader buffReader = new BufferedReader(isr);
         jsonObject = (JSONObject)(parser.parse(buffReader));//NOPMD
-        updateSimulatorProperties();
     }
 
-
+    public void switchDBString(String dbName)
+    {
+        dbProperties.switchDbString(dbName);
+    }
 
     public Object getProjectFileProperty(final String propertyName)
     {
         return jsonObject.get(propertyName);
     }
 
-    public String getSimulatorJdbcDriver()
+    public String getJdbcDriver()
     {
-        return mySimulator.getJdbcDriver(false);
+        return dbProperties.getJdbcDriver();
     }
 
-    public String getSimulatorJdbcURL()
+    public String getJdbcURL()
     {
-        return mySimulator.getJdbcURL(false);
+        return dbProperties.getJdbcURL();
     }
 
-    public String getSimulatorJdbcUser()
+    public String getJdbcUser()
     {
-        return mySimulator.getJdbcUser(false);
+        return dbProperties.getJdbcUser();
     }
 
-    public String getSimulatorJdbcPassword()
+    public String getJdbcPassword()
     {
-        return mySimulator.getJdbcPassword(false);
-    }
-
-    private void updateSimulatorProperties()
-    {
-        // Update all the simulator functions.
-        mySimulator.getJdbcDriver(true);
-        mySimulator.getJdbcPassword(true);
-        mySimulator.getJdbcURL(true);
-        mySimulator.getJdbcUser(true);
+        return dbProperties.getJdbcPassword();
     }
 
 
 
-
-
-
-
-    private class SimulatorProperties
+    private class DbProperties
     {
-        private String jdbcDriver;
-        private String jdbcURL;
-        private String jdbcUser;
-        private String jdbcPassword;
 
-        private final String jdbcDriverStr;
-        private final String jdbcURLStr;
-        private final String jdbcUserStr;
-        private final String jdbcPasswordStr;
+        private String jdbcDriverStr;
+        private String jdbcURLStr;
+        private String jdbcUserStr;
+        private String jdbcPasswordStr;
 
-        public SimulatorProperties()
+        public DbProperties()
         {
-            jdbcDriver = "";
-            jdbcURL = "";
-            jdbcUser = "";
-            jdbcPassword = "";
-            jdbcDriverStr = "simulator.jdbc.driver";
-            jdbcURLStr = "simulator.jdbc.jdbcUrl";
-            jdbcUserStr = "simulator.jdbc.user";
-            jdbcPasswordStr = "simulator.jdbc.password";
-
+            jdbcDriverStr = "";
+            jdbcUserStr = "";
+            jdbcURLStr = "";
+            jdbcPasswordStr = "";
         }
 
-
-
-        public String getJdbcDriver(final boolean needUpdate)
+        public void switchDbString(String dbName)
         {
-            if(needUpdate)//NOPMD
-                jdbcDriver =(String)getProjectFileProperty(jdbcDriverStr);
-            return jdbcDriver;
+            if(ifEmpty(dbName))
+                throw new DbNameEmptyException("Db name can not be empty");
+            jdbcDriverStr = dbName+".jdbc.driver";
+            jdbcURLStr = dbName+".jdbc.jdbcUrl";
+            jdbcUserStr = dbName+".jdbc.user";
+            jdbcPasswordStr = dbName+".jdbc.password";
         }
 
-        public String getJdbcURL(final boolean needUpdate)
+        private void validateDbStrings(String dbString,String dbStringType)
         {
-            if(needUpdate)//NOPMD
-                jdbcURL = (String)getProjectFileProperty(jdbcURLStr);
-            return jdbcURL;
+            if(ifEmpty(dbString))
+                throw new DbQueryStringEmptyException(dbStringType+" can not be empty,please call switchDbString first.");
         }
 
-        public String getJdbcUser(final boolean needUpdate)
+        public String getJdbcDriver()
         {
-            if(needUpdate)//NOPMD
-                jdbcUser = (String)getProjectFileProperty(jdbcUserStr);
-            return jdbcUser;
+            validateDbStrings(jdbcDriverStr,"JDBC Driver String");
+            return (String)getProjectFileProperty(jdbcDriverStr);
         }
-        public String getJdbcPassword(final boolean needUpdate)
+
+        public String getJdbcURL()
         {
-            if(needUpdate)//NOPMD
-                jdbcPassword = (String)getProjectFileProperty(jdbcPasswordStr);
-            return jdbcPassword;
+            validateDbStrings(jdbcURLStr,"JDBC URL String");
+            return (String)getProjectFileProperty(jdbcURLStr);
+        }
+
+        public String getJdbcUser()
+        {
+            validateDbStrings(jdbcUserStr,"JDBC User String");
+            return (String)getProjectFileProperty(jdbcUserStr);
+        }
+        public String getJdbcPassword()
+        {
+            validateDbStrings(jdbcPasswordStr,"JDBC Password String");
+            return (String)getProjectFileProperty(jdbcPasswordStr);
         }
 
     }
