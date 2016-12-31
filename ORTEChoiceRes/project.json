@@ -1,0 +1,15 @@
+{
+    "choiceres.jdbc.driver": "com.mysql.jdbc.Driver",
+    "choiceres.jdbc.jdbcUrl": "jdbc:mysql://localhost/choiceres?useUnicode=true&amp;characterEncoding=UTF-8",
+    "choiceres.jdbc.user": "root",
+    "choiceres.jdbc.password": "Elekchina123!",
+    "simulator.jdbc.driver": "com.mysql.jdbc.Driver",
+    "simulator.jdbc.jdbcUrl": "jdbc:mysql://localhost/simulator?useUnicode=true&amp;characterEncoding=UTF-8",
+    "simulator.jdbc.user": "root",
+    "simulator.jdbc.password": "Elekchina123!",
+    "simulator.url":"http://localhost:8080/simulator",
+    "choiceres.url":"http://localhost:8080/choiceres",
+    "supplierprofile.url":"http://localhost:8080/supplierprofile",
+    "mongodbIP":"10.200.170.2",
+    "waitingTimeFor1":15
+}
