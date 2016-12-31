@@ -10,6 +10,5 @@
     "simulator.url":"http://localhost:8080/simulator",
     "choiceres.url":"http://localhost:8080/choiceres",
     "supplierprofile.url":"http://localhost:8080/supplierprofile",
-    "mongodbIP":"10.200.170.2",
-    "waitingTimeFor1":15
+    "mongodbIP":"10.200.170.2"
 }
