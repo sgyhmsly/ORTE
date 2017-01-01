@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
+import static CommonUtil.FileReaderWithEncoding.readJsonFiles;
 import static CommonUtil.GeneralFunc.ifEmpty;
 import static CommonUtil.FileEncoding.getFileEncode;
 
@@ -37,7 +38,7 @@ public final class GlobalMgr
     }
 
 
-    public String generateWorkingDirectory() throws URISyntaxException
+    public String getWorkingDirectory() throws URISyntaxException
     {
         if (ifEmpty(workingDirectory))
         {
@@ -51,40 +52,37 @@ public final class GlobalMgr
 
     public void importPropertyFile(final File jsonPropertyFile) throws IOException,ParseException,URISyntaxException
     {
-
-        final JSONParser parser = new JSONParser();
-        BufferedReader buffReader = readFilesWithEncode(jsonPropertyFile);
-        jsonObject = (JSONObject)(parser.parse(buffReader));//NOPMD
+        readJsonFiles(jsonPropertyFile);
     }
 
-    public void switchDBString(String dbName)
-    {
-        dbProperties.switchDbString(dbName);
-    }
+//    public void switchDBString(String dbName)
+//    {
+//        dbProperties.switchDbString(dbName);
+//    }
 
     public Object getProjectFileProperty(final String propertyName)
     {
         return jsonObject.get(propertyName);
     }
 
-    public String getJdbcDriver()
+    public String getJdbcDriver(final String dbName)throws DbNameEmptyException
     {
-        return dbProperties.getJdbcDriver();
+        return dbProperties.getJdbcDriver(dbName);
     }
 
-    public String getJdbcURL()
+    public String getJdbcURL(final String dbName)throws DbNameEmptyException
     {
-        return dbProperties.getJdbcURL();
+        return dbProperties.getJdbcURL(dbName);
     }
 
-    public String getJdbcUser()
+    public String getJdbcUser(final String dbName)throws DbNameEmptyException
     {
-        return dbProperties.getJdbcUser();
+        return dbProperties.getJdbcUser(dbName);
     }
 
-    public String getJdbcPassword()
+    public String getJdbcPassword(final String dbName)throws DbNameEmptyException
     {
-        return dbProperties.getJdbcPassword();
+        return dbProperties.getJdbcPassword(dbName);
     }
 
 
@@ -99,49 +97,61 @@ public final class GlobalMgr
 
         public DbProperties()
         {
-            jdbcDriverStr = "";
-            jdbcUserStr = "";
-            jdbcURLStr = "";
-            jdbcPasswordStr = "";
+            jdbcDriverStr = ".jdbc.driver";
+            jdbcUserStr = ".jdbc.jdbcUrl";
+            jdbcURLStr = ".jdbc.user";
+            jdbcPasswordStr = ".jdbc.password";
         }
 
-        public void switchDbString(String dbName)
+//        public void switchDbString(final String dbName)
+//        {
+//            if(ifEmpty(dbName))
+//                throw new DbNameEmptyException("Db name can not be empty");
+//            jdbcDriverStr = dbName+".jdbc.driver";
+//            jdbcURLStr = dbName+".jdbc.jdbcUrl";
+//            jdbcUserStr = dbName+".jdbc.user";
+//            jdbcPasswordStr = dbName+".jdbc.password";
+//        }
+//
+//        private void validateDbStrings(final String dbString,final String dbStringType)
+//        {
+//            if (ifEmpty(dbString))
+//            {
+//                throw new RuntimeException(dbStringType+" should not be empty");
+//            }
+//        }
+
+        private void validateDbName(final String dbName)throws DbNameEmptyException
         {
             if(ifEmpty(dbName))
-                throw new DbNameEmptyException("Db name can not be empty");
-            jdbcDriverStr = dbName+".jdbc.driver";
-            jdbcURLStr = dbName+".jdbc.jdbcUrl";
-            jdbcUserStr = dbName+".jdbc.user";
-            jdbcPasswordStr = dbName+".jdbc.password";
+                throw new DbNameEmptyException("Db name should not be empty");
         }
 
-        private void validateDbStrings(String dbString,String dbStringType)
+        public String getJdbcDriver(final String dbName)throws DbNameEmptyException
         {
-            assert (!ifEmpty(dbString));
+            validateDbName(dbName);
+            final String queryString = dbName+jdbcDriverStr;
+            return (String)getProjectFileProperty(queryString);
         }
 
-
-        public String getJdbcDriver()
+        public String getJdbcURL(final String dbName)throws DbNameEmptyException
         {
-            validateDbStrings(jdbcDriverStr,"JDBC Driver String");
-            return (String)getProjectFileProperty(jdbcDriverStr);
+            validateDbName(dbName);
+            final String queryString = dbName+jdbcURLStr;
+            return (String)getProjectFileProperty(queryString);
         }
 
-        public String getJdbcURL()
+        public String getJdbcUser(final String dbName)throws DbNameEmptyException
         {
-            validateDbStrings(jdbcURLStr,"JDBC URL String");
-            return (String)getProjectFileProperty(jdbcURLStr);
+            validateDbName(dbName);
+            final String queryString = dbName+jdbcUserStr;
+            return (String)getProjectFileProperty(queryString);
         }
-
-        public String getJdbcUser()
+        public String getJdbcPassword(final String dbName)throws DbNameEmptyException
         {
-            validateDbStrings(jdbcUserStr,"JDBC User String");
-            return (String)getProjectFileProperty(jdbcUserStr);
-        }
-        public String getJdbcPassword()
-        {
-            validateDbStrings(jdbcPasswordStr,"JDBC Password String");
-            return (String)getProjectFileProperty(jdbcPasswordStr);
+            validateDbName(dbName);
+            final String queryString = dbName+jdbcPasswordStr;
+            return (String)getProjectFileProperty(queryString);
         }
 
     }

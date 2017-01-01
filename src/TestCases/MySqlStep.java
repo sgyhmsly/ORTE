@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import ORTE.GlobalMgr;
+import ORTEExceptions.DbNameEmptyException;
 import ORTEExceptions.StepFileNotNullException;
 import org.apache.commons.io.IOUtils;
 import ORTEExceptions.SqlPropertyFileException;
@@ -31,11 +32,11 @@ public class MySqlStep extends AbstractStep
 
     }
 
-    private void generateDbQueryString()
-    {
-        assert(!ifEmpty(dbName));
-        GlobalMgr.getInstance().switchDBString(dbName);
-    }
+//    private void generateDbQueryString()
+//    {
+//        assert(!ifEmpty(dbName));
+//        GlobalMgr.getInstance().switchDBString(dbName);
+//    }
 
     private void extractDbNameFromPropertyFile(final File sqlPropertiesFile) throws FileNotFoundException,IOException,SqlPropertyFileException
     {
@@ -53,7 +54,7 @@ public class MySqlStep extends AbstractStep
             else
             {
                 dbName = parts[1];
-                generateDbQueryString();
+//                generateDbQueryString();
             }
         }
         finally
@@ -65,29 +66,32 @@ public class MySqlStep extends AbstractStep
 
 
     @Override
-    public void execute() throws ClassNotFoundException,SQLException,FileNotFoundException,IOException
+    public void execute() throws ClassNotFoundException,SQLException,FileNotFoundException,IOException, DbNameEmptyException
     {
         Connection myConnection = null;
         try {
-            String jdbcDriver = GlobalMgr.getInstance().getJdbcDriver();
-            Class.forName(jdbcDriver);
             myConnection = generateConnection();
         }
         catch (ClassNotFoundException|SQLException e) {
           setExecuteResult(false);
           throw(e);
         }
+        RunSQLScriptFile(myConnection);
 
+    }
+
+    private void RunSQLScriptFile(Connection myConnection)throws IOException,SQLException
+    {
         ScriptRunner runner = new ScriptRunner(myConnection, true, true);
         BufferedReader sqlReader = readFilesWithEncode(stepFile);
         runner.runScript(sqlReader);
     }
 
-
-
-    private Connection generateConnection() throws SQLException {
-        String jdbcUser = GlobalMgr.getInstance().getJdbcUser();
-        String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword();
+    private Connection generateConnection() throws ClassNotFoundException,SQLException,DbNameEmptyException {
+        String jdbcDriver = GlobalMgr.getInstance().getJdbcDriver(dbName);
+        Class.forName(jdbcDriver);
+        String jdbcUser = GlobalMgr.getInstance().getJdbcUser(dbName);
+        String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword(dbName);
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(jdbcUser);
         dataSource.setPassword(jdbcPassword);

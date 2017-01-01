@@ -1,5 +1,9 @@
 package CommonUtil;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.*;
 
 import static CommonUtil.FileEncoding.getFileEncode;
@@ -20,6 +24,13 @@ public class FileReaderWithEncoding
         final InputStreamReader isr = new InputStreamReader(is, fileEncode);
         final BufferedReader buffReader = new BufferedReader(isr);
         return buffReader;
+    }
+
+    public static JSONObject readJsonFiles(final File jsonFile)throws IOException,ParseException
+    {
+        final JSONParser parser = new JSONParser();
+        BufferedReader buffReader = readFilesWithEncode(jsonFile);
+        return (JSONObject)(parser.parse(buffReader));//NOPMD
     }
 
 }
