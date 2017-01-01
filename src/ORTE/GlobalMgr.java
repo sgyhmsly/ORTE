@@ -4,17 +4,16 @@ import java.io.*;
 import java.net.URISyntaxException;
 
 
-import ORTEExceptions.DbQueryStringEmptyException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
 import static CommonUtil.GeneralFunc.ifEmpty;
 import static CommonUtil.FileEncoding.getFileEncode;
 
 
 import ORTEExceptions.DbNameEmptyException;
-import ORTEExceptions.DbQueryStringEmptyException;
 
 /**
  * Created by DT173 on 2016/12/29.
@@ -54,10 +53,7 @@ public final class GlobalMgr
     {
 
         final JSONParser parser = new JSONParser();
-        final String fileEncode = getFileEncode(jsonPropertyFile);
-        final FileInputStream is = new FileInputStream(jsonPropertyFile);//NOPMD
-        final InputStreamReader isr = new InputStreamReader(is, fileEncode);
-        final BufferedReader buffReader = new BufferedReader(isr);
+        BufferedReader buffReader = readFilesWithEncode(jsonPropertyFile);
         jsonObject = (JSONObject)(parser.parse(buffReader));//NOPMD
     }
 
@@ -121,9 +117,9 @@ public final class GlobalMgr
 
         private void validateDbStrings(String dbString,String dbStringType)
         {
-            if(ifEmpty(dbString))
-                throw new DbQueryStringEmptyException(dbStringType+" can not be empty,please call switchDbString first.");
+            assert (!ifEmpty(dbString));
         }
+
 
         public String getJdbcDriver()
         {

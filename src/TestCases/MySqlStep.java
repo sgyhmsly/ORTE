@@ -5,11 +5,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import ORTE.GlobalMgr;
+import ORTEExceptions.StepFileNotNullException;
 import org.apache.commons.io.IOUtils;
 import ORTEExceptions.SqlPropertyFileException;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
+import static CommonUtil.GeneralFunc.ifEmpty;
 /**
  * Created by DT173 on 2016/12/29.
  */
@@ -17,22 +20,23 @@ public class MySqlStep extends AbstractStep
 {
 
     private String dbName;
-    private File stepFile;
-    public MySqlStep(File stepFiles) throws FileNotFoundException,IOException,SQLException,SqlPropertyFileException
+    public MySqlStep(File stepFile)throws StepFileNotNullException,SqlPropertyFileException,FileNotFoundException,IOException
     {
-        super(stepFiles);
-        this.stepFile = stepFiles;
-        File dbPropertyFile = new File(stepFiles.getPath()+".properties");
-        generateDbName(dbPropertyFile);
-        generateConnection();
+        super(stepFile);
+        File dbPropertyFile = new File(this.getStepPath()+".properties");
+        if (!dbPropertyFile.exists())
+            throw new FileNotFoundException("Db property file not found");
+        extractDbNameFromPropertyFile(dbPropertyFile);
+
     }
 
     private void generateDbQueryString()
     {
+        assert(!ifEmpty(dbName));
         GlobalMgr.getInstance().switchDBString(dbName);
     }
 
-    private void generateDbName(final File sqlPropertiesFile) throws FileNotFoundException,IOException,SqlPropertyFileException
+    private void extractDbNameFromPropertyFile(final File sqlPropertiesFile) throws FileNotFoundException,IOException,SqlPropertyFileException
     {
         final FileInputStream propertyStream = new FileInputStream(sqlPropertiesFile);
         String[] parts = null;
@@ -74,14 +78,13 @@ public class MySqlStep extends AbstractStep
         }
 
         ScriptRunner runner = new ScriptRunner(myConnection, true, true);
-        runner.runScript(new BufferedReader(new FileReader(getStepName())));
+        BufferedReader sqlReader = readFilesWithEncode(stepFile);
+        runner.runScript(sqlReader);
     }
 
 
 
     private Connection generateConnection() throws SQLException {
-
-
         String jdbcUser = GlobalMgr.getInstance().getJdbcUser();
         String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword();
         MysqlDataSource dataSource = new MysqlDataSource();
