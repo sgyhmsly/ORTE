@@ -23,7 +23,8 @@ public class MySqlStep extends AbstractStep
     public MySqlStep(File stepFile)throws StepFileNotNullException,SqlPropertyFileException,FileNotFoundException,IOException
     {
         super(stepFile);
-        File dbPropertyFile = new File(this.getStepPath()+".properties");
+        String sqlPropertyFilePath = stepFile.getParentFile().getPath()+"\\" + stepFile.getName().replaceFirst("\\d+_","")+".properties";
+        File dbPropertyFile = new File(sqlPropertyFilePath);
         if (!dbPropertyFile.exists())
             throw new FileNotFoundException("Db property file not found");
         extractDbNameFromPropertyFile(dbPropertyFile);

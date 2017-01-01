@@ -14,8 +14,8 @@ public class GroovyStepTest//NOPMD
     @Test
     public void execute() throws Exception//NOPMD
     {
-//        GroovyStep oStep = new GroovyStep(new File("C:\\temp\\test.groovy"));
-//        oStep.execute();
+        GroovyStep oStep = new GroovyStep(new File("C:\\temp\\test.groovy"));
+        oStep.execute();
     }
 
 }

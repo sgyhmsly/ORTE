@@ -28,7 +28,7 @@ public class GeneralFunc
     public static  boolean ifEmpty(final String oc)//NOPMD
     {
         boolean bIsEmpty = true;//NOPMD
-        if(oc != null && oc.trim().equals("") )//NOPMD
+        if(oc != null && (!oc.trim().equals("")) )//NOPMD
             bIsEmpty = false;
         return bIsEmpty;
     }
