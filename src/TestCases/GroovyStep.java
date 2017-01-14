@@ -39,7 +39,7 @@ public class GroovyStep extends AbstractStep implements TestComponent
     {
         try
         {
-            groovyEngine.run(getStepName(), groovyVariables);
+            groovyEngine.run(getTestName(), groovyVariables);
         } catch (ResourceException|ScriptException e)
         {
             this.setExecuteResult(false);

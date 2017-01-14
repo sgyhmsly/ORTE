@@ -1,16 +1,21 @@
 package TestCases;
 
+import ORTEExceptions.StepFileNotNullException;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
  * Created by JJMM on 2017/1/14.
  */
-public class TestComposite implements TestComponent
+public class TestComposite extends TestElement implements TestComponent
 {
     protected Vector<TestComponent> components;
 
-    public TestComposite()
+    public TestComposite(File testFile) throws StepFileNotNullException,FileNotFoundException
     {
+        super(testFile );
         components = new Vector<TestComponent>();
     }
 

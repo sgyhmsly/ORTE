@@ -10,52 +10,24 @@ import ORTEExceptions.StepFileNotNullException;
 /**
  * Created by DT173 on 2016/12/28.
  */
-public abstract class AbstractStep implements TestComponent
+public abstract class AbstractStep  extends  TestElement implements TestComponent
 {
-    private boolean ifSuccess;
-    protected final File stepFile;
+
     AbstractStep(final File stepFile) throws StepFileNotNullException,FileNotFoundException
     {
-        if(stepFile == null)
-            throw new StepFileNotNullException("Step file not be null");
-        if(!stepFile.exists())
-            throw new FileNotFoundException("Step file not exist");
-        this.stepFile = stepFile;
-        ifSuccess = true;
+        super(stepFile);
     }
-
-    public String getStepName()
-    {
-        return stepFile.getName();
-    }
-
-    public String getStepPath()
-    {
-        return stepFile.getPath();
-    }
-
-    public boolean getExecuteResult()
-    {
-        return ifSuccess;
-    }
-
-    public void setExecuteResult(boolean result)
-    {
-        ifSuccess = result;
-    }
-
-
 
     public abstract void execute() throws Exception;
 
     @Override
     public StepPath getStepPathType()
     {
-        if (stepFile.getPath().toLowerCase().contains("runs"))
+        if (testFile.getPath().toLowerCase().contains("runs"))
             return StepPath.RunFolder;
-        else if(stepFile.getPath().toLowerCase().contains("setups"))
+        else if(testFile.getPath().toLowerCase().contains("setups"))
             return StepPath.SetupFolder;
-        else if (stepFile.getPath().toLowerCase().contains("asserts"))
+        else if (testFile.getPath().toLowerCase().contains("asserts"))
             return StepPath.AssertFolder;
         else
             throw new LeafStepException("Steps not in runs/setups/asserts folder");

@@ -1,7 +1,10 @@
 package TestCases;
 
 import ORTEExceptions.LeafStepException;
+import ORTEExceptions.StepFileNotNullException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
@@ -10,7 +13,10 @@ import java.util.Vector;
 public class TestGroup extends TestComposite implements TestComponent
 {
 
-
+    public TestGroup(File groupName)throws StepFileNotNullException,FileNotFoundException
+    {
+        super(groupName);
+    }
     @Override
     public void addTestElement(TestComponent tElement)
     {

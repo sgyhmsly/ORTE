@@ -83,7 +83,7 @@ public class MySqlStep extends AbstractStep implements TestComponent
     private void RunSQLScriptFile(Connection myConnection)throws IOException,SQLException
     {
         ScriptRunner runner = new ScriptRunner(myConnection, true, true);
-        BufferedReader sqlReader = readFilesWithEncode(stepFile);
+        BufferedReader sqlReader = readFilesWithEncode(testFile);
         runner.runScript(sqlReader);
     }
 
