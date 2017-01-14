@@ -17,7 +17,7 @@ import static CommonUtil.GeneralFunc.ifEmpty;
 /**
  * Created by DT173 on 2016/12/29.
  */
-public class MySqlStep extends AbstractStep
+public class MySqlStep extends AbstractStep implements TestComponent
 {
 
     private String dbName;

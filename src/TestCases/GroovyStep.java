@@ -15,7 +15,7 @@ import java.net.URL;
 /**
  * Created by DT173 on 2016/12/28.
  */
-public class GroovyStep extends AbstractStep
+public class GroovyStep extends AbstractStep implements TestComponent
 {
     private final GroovyScriptEngine groovyEngine;
     private final Binding groovyVariables;
