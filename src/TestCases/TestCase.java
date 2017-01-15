@@ -16,7 +16,7 @@ public class TestCase extends TestComponent
     private Vector<TestComponent> runSteps;
     private Vector<TestComponent> assertSteps;
 
-    public TestCase(File caseName) throws StepFileNotNullException,FileNotFoundException
+    public TestCase(final File caseName) throws StepFileNotNullException,FileNotFoundException
     {
         super(caseName);
         setupSteps = new Vector<>();
@@ -48,11 +48,11 @@ public class TestCase extends TestComponent
 
         try
         {
-            for (TestComponent setupStep:setupSteps)
+            for (final TestComponent setupStep:setupSteps)
                 setupStep.execute();
-            for (TestComponent runStep:runSteps)
+            for (final TestComponent runStep:runSteps)
                 runStep.execute();
-            for (TestComponent assertStep:assertSteps)
+            for (final TestComponent assertStep:assertSteps)
                 assertStep.execute();
         } catch (Exception e)
         {
@@ -63,7 +63,7 @@ public class TestCase extends TestComponent
     }
 
     @Override
-    public void addTestElement(TestComponent tElement)
+    public void addTestElement(final TestComponent tElement)
     {
         if (tElement.getStepPathType() == StepPath.SetupFolder)
             setupSteps.add(tElement);
@@ -76,7 +76,7 @@ public class TestCase extends TestComponent
     }
 
     @Override
-    public void removeTestElement(TestComponent tElement)
+    public void removeTestElement(final TestComponent tElement)
     {
         if (tElement.getStepPathType() == StepPath.SetupFolder)
             setupSteps.remove(tElement);
@@ -89,7 +89,7 @@ public class TestCase extends TestComponent
     @Override
     public Object getChildren()
     {
-        Vector<Vector<TestComponent>> testSteps = new Vector<>();
+        final Vector<Vector<TestComponent>> testSteps = new Vector<>();
         testSteps.add(setupSteps);
         testSteps.add(runSteps);
         testSteps.add(assertSteps);

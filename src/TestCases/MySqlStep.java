@@ -13,7 +13,7 @@ import ORTEExceptions.SqlPropertyFileException;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
-import static CommonUtil.GeneralFunc.ifEmpty;
+
 /**
  * Created by DT173 on 2016/12/29.
  */
@@ -21,11 +21,11 @@ public class MySqlStep extends AbstractStep
 {
 
     private String dbName;
-    public MySqlStep(File stepFile)throws StepFileNotNullException,SqlPropertyFileException,FileNotFoundException,IOException
+    public MySqlStep(final File stepFile)throws StepFileNotNullException,SqlPropertyFileException,FileNotFoundException,IOException
     {
         super(stepFile);
-        String sqlPropertyFilePath = stepFile.getParentFile().getPath()+"\\" + stepFile.getName().replaceFirst("\\d+_","")+".properties";
-        File dbPropertyFile = new File(sqlPropertyFilePath);
+        final String sqlPropertyFilePath = stepFile.getParentFile().getPath()+"\\" + stepFile.getName().replaceFirst("\\d+_","")+".properties";
+        final File dbPropertyFile = new File(sqlPropertyFilePath);
         if (!dbPropertyFile.exists())
             throw new FileNotFoundException("Db property file not found");
         extractDbNameFromPropertyFile(dbPropertyFile);
@@ -85,22 +85,26 @@ public class MySqlStep extends AbstractStep
             setExecuteResult(false);
             throw(e);
         }
+        finally
+        {
+            myConnection.close();
+        }
 
     }
 
-    private void RunSQLScriptFile(Connection myConnection)throws IOException,SQLException
+    private void RunSQLScriptFile(final Connection myConnection)throws IOException,SQLException
     {
-        ScriptRunner runner = new ScriptRunner(myConnection, true, true);
-        BufferedReader sqlReader = readFilesWithEncode(fileName);
+        final ScriptRunner runner = new ScriptRunner(myConnection, true, true);
+        final BufferedReader sqlReader = readFilesWithEncode(fileName);
         runner.runScript(sqlReader);
     }
 
     private Connection generateConnection() throws ClassNotFoundException,SQLException,DbNameEmptyException {
-        String jdbcDriver = GlobalMgr.getInstance().getJdbcDriver(dbName);
+        final String jdbcDriver = GlobalMgr.getInstance().getJdbcDriver(dbName);
         Class.forName(jdbcDriver);
-        String jdbcUser = GlobalMgr.getInstance().getJdbcUser(dbName);
-        String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword(dbName);
-        MysqlDataSource dataSource = new MysqlDataSource();
+        final String jdbcUser = GlobalMgr.getInstance().getJdbcUser(dbName);
+        final String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword(dbName);
+        final MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(jdbcUser);
         dataSource.setPassword(jdbcPassword);
         dataSource.setServerName(dbName);

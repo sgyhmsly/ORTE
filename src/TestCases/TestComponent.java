@@ -4,13 +4,18 @@ import ORTEExceptions.StepFileNotNullException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Objects;
+
 
 /**
  * Created by JJMM on 2017/1/14.
  */
 public abstract class TestComponent
 {
+    private boolean ifSuccess;
+    protected final File fileName;
+
+
+
     abstract void execute() throws Exception;
     abstract void preExecute();
     abstract void afterExecute();
@@ -21,8 +26,6 @@ public abstract class TestComponent
     abstract Object getChildren();
 
     abstract StepPath getStepPathType();
-    private boolean ifSuccess;
-    protected final File fileName;
 
 
     public TestComponent(final File stepFile) throws StepFileNotNullException,FileNotFoundException
@@ -52,7 +55,7 @@ public abstract class TestComponent
     }
 
 
-    public void setExecuteResult(boolean result)
+    public void setExecuteResult(final boolean result)
     {
         ifSuccess = result;
     }

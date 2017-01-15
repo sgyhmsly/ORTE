@@ -34,13 +34,13 @@ public abstract class AbstractStep  extends  TestComponent
     }
 
     @Override
-    public void addTestElement(TestComponent tElement)
+    public void addTestElement(final TestComponent tElement)
     {
         throw new LeafStepException("Leaf Steps can not add nested steps");
     }
 
     @Override
-    public void removeTestElement(TestComponent tElement)
+    public void removeTestElement(final TestComponent tElement)
     {
         throw new LeafStepException("Leaf Steps can not remove nested steps");
     }

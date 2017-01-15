@@ -13,12 +13,12 @@ import java.io.FileNotFoundException;
 public class TestGroup extends TestComposite
 {
 
-    public TestGroup(File groupName)throws StepFileNotNullException,FileNotFoundException
+    public TestGroup(final File groupName)throws StepFileNotNullException,FileNotFoundException
     {
         super(groupName);
     }
     @Override
-    public void addTestElement(TestComponent tElement)
+    public void addTestElement(final TestComponent tElement)
     {
         if (tElement instanceof AbstractStep)
             throw new LeafStepException("LeafStep can not be added into test group");
@@ -27,7 +27,7 @@ public class TestGroup extends TestComposite
     }
 
     @Override
-    public void removeTestElement(TestComponent tElement)
+    public void removeTestElement(final TestComponent tElement)
     {
         if (tElement instanceof AbstractStep)
             return;

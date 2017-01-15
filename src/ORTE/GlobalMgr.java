@@ -2,16 +2,11 @@ package ORTE;//NOPMD
 
 import java.io.*;
 import java.net.URISyntaxException;
-
-
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
 import static CommonUtil.FileReaderWithEncoding.readJsonFiles;
 import static CommonUtil.GeneralFunc.ifEmpty;
-import static CommonUtil.FileEncoding.getFileEncode;
+
 
 
 import ORTEExceptions.DbNameEmptyException;

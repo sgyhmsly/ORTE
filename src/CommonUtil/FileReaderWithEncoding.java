@@ -29,7 +29,7 @@ public class FileReaderWithEncoding
     public static JSONObject readJsonFiles(final File jsonFile)throws IOException,ParseException
     {
         final JSONParser parser = new JSONParser();
-        BufferedReader buffReader = readFilesWithEncode(jsonFile);
+        final BufferedReader buffReader = readFilesWithEncode(jsonFile);
         return (JSONObject)(parser.parse(buffReader));//NOPMD
     }
 

@@ -13,7 +13,7 @@ public class TestComposite extends  TestComponent
 {
     protected Vector<TestComponent> components;
 
-    public TestComposite(File testFile) throws StepFileNotNullException,FileNotFoundException
+    public TestComposite(final File testFile) throws StepFileNotNullException,FileNotFoundException
     {
         super(testFile );
         components = new Vector<TestComponent>();
@@ -45,7 +45,7 @@ public class TestComposite extends  TestComponent
 
         try
         {
-            for (TestComponent component:components)
+            for (final TestComponent component:components)
             {
                 component.execute();
             }
@@ -57,13 +57,13 @@ public class TestComposite extends  TestComponent
     }
 
     @Override
-    public void addTestElement(TestComponent tElement)
+    public void addTestElement(final TestComponent tElement)
     {
         components.add(tElement);
     }
 
     @Override
-    public void removeTestElement(TestComponent tElement)
+    public void removeTestElement(final TestComponent tElement)
     {
         components.remove(tElement);
     }

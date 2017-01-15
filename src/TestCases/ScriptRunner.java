@@ -27,8 +27,6 @@ import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.regex.Matcher;
@@ -62,14 +60,14 @@ public class ScriptRunner {
     /**
      * Default constructor
      */
-    public ScriptRunner(Connection connection, boolean autoCommit,
-                        boolean stopOnError) {
+    public ScriptRunner(Connection connection, final boolean autoCommit,
+                        final boolean stopOnError) {
         this.connection = connection;
         this.autoCommit = autoCommit;
         this.stopOnError = stopOnError;
     }
 
-    public void setDelimiter(String delimiter, boolean fullLineDelimiter) {
+    public void setDelimiter(final String delimiter, final boolean fullLineDelimiter) {
         this.delimiter = delimiter;
         this.fullLineDelimiter = fullLineDelimiter;
     }
@@ -79,7 +77,7 @@ public class ScriptRunner {
      *
      * @param logWriter - the new value of the logWriter property
      */
-    public void setLogWriter(PrintWriter logWriter) {
+    public void setLogWriter(final PrintWriter logWriter) {
         this.logWriter = logWriter;
     }
 
@@ -88,7 +86,7 @@ public class ScriptRunner {
      *
      * @param errorLogWriter - the new value of the errorLogWriter property
      */
-    public void setErrorLogWriter(PrintWriter errorLogWriter) {
+    public void setErrorLogWriter(final PrintWriter errorLogWriter) {
         this.errorLogWriter = errorLogWriter;
     }
 
@@ -97,9 +95,9 @@ public class ScriptRunner {
      *
      * @param reader - the source of the script
      */
-    public void runScript(Reader reader) throws IOException, SQLException {
+    public void runScript(final Reader reader) throws IOException, SQLException {
         try {
-            boolean originalAutoCommit = connection.getAutoCommit();
+            final boolean originalAutoCommit = connection.getAutoCommit();
             try {
                 if (originalAutoCommit != this.autoCommit) {
                     connection.setAutoCommit(this.autoCommit);
@@ -110,8 +108,6 @@ public class ScriptRunner {
             }
         } catch (IOException | SQLException e) {
             throw e;
-        } catch (Exception e) {
-            throw new RuntimeException("Error running script.  Cause: " + e, e);
         }
     }
 
@@ -124,17 +120,17 @@ public class ScriptRunner {
      * @throws SQLException if any SQL errors occur
      * @throws IOException if there is an error reading from the Reader
      */
-    private void runScript(Connection conn, Reader reader) throws IOException,
+    private void runScript(final Connection conn, final Reader reader) throws IOException,
             SQLException {
         StringBuffer command = null;
         try {
-            LineNumberReader lineReader = new LineNumberReader(reader);
+            final LineNumberReader lineReader = new LineNumberReader(reader);
             String line;
             while ((line = lineReader.readLine()) != null) {
                 if (command == null) {
                     command = new StringBuffer();
                 }
-                String trimmedLine = line.trim();
+                final String trimmedLine = line.trim();
                 final Matcher delimMatch = delimP.matcher(trimmedLine);
                 if (trimmedLine.length() < 1
                         || trimmedLine.startsWith("//")) {
@@ -174,16 +170,20 @@ public class ScriptRunner {
         }
     }
 
-    private void execCommand(Connection conn, StringBuffer command,
-                             LineNumberReader lineReader) throws SQLException {
-        Statement statement = conn.createStatement();
-
-        println(command);
-
-        boolean hasResults = false;
-        try {
+    private void execCommand(final Connection conn, final StringBuffer command,
+                             final LineNumberReader lineReader) throws SQLException {
+        Statement statement= null;
+        try
+        {
+            statement = conn.createStatement();
+            println(command);
+            boolean hasResults = false;
             hasResults = statement.execute(command.toString());
-        } catch (SQLException e) {
+            if (autoCommit && !conn.getAutoCommit()) {
+                conn.commit();
+            }
+        }
+        catch (SQLException e) {
             final String errText = String.format("Error executing '%s' (line %d): %s", command, lineReader.getLineNumber(), e.getMessage());
             if (stopOnError) {
                 throw new SQLException(errText, e);
@@ -191,54 +191,90 @@ public class ScriptRunner {
                 println(errText);
             }
         }
-
-        if (autoCommit && !conn.getAutoCommit()) {
-            conn.commit();
-        }
-
-        ResultSet rs = statement.getResultSet();
-        if (hasResults && rs != null) {
-            ResultSetMetaData md = rs.getMetaData();
-            int cols = md.getColumnCount();
-            for (int i = 1; i <= cols; i++) {
-                String name = md.getColumnLabel(i);
-                print(name + "\t");
+        finally
+        {
+            try {
+                if (statement!=null)
+                    statement.close();
             }
-            println("");
-            while (rs.next()) {
-                for (int i = 1; i <= cols; i++) {
-                    String value = rs.getString(i);
-                    print(value + "\t");
-                }
-                println("");
+            finally
+            {
+                connection.close();
             }
         }
 
-        try {
-            statement.close();
-        } catch (Exception e) {
-            // Ignore to workaround a bug in Jakarta DBCP
-        }
+
+
     }
+
+
+
+
+//    private void execCommand(Connection conn, StringBuffer command,
+//                             LineNumberReader lineReader) throws SQLException {
+//        Statement statement = conn.createStatement();
+//
+//        println(command);
+//
+//        boolean hasResults = false;
+//        try {
+//            hasResults = statement.execute(command.toString());
+//        } catch (SQLException e) {
+//            final String errText = String.format("Error executing '%s' (line %d): %s", command, lineReader.getLineNumber(), e.getMessage());
+//            if (stopOnError) {
+//                throw new SQLException(errText, e);
+//            } else {
+//                println(errText);
+//            }
+//        }
+//
+//        if (autoCommit && !conn.getAutoCommit()) {
+//            conn.commit();
+//        }
+//
+//        ResultSet rs = statement.getResultSet();
+//        if (hasResults && rs != null) {
+//            ResultSetMetaData md = rs.getMetaData();
+//            int cols = md.getColumnCount();
+//            for (int i = 1; i <= cols; i++) {
+//                String name = md.getColumnLabel(i);
+//                print(name + "\t");
+//            }
+//            println("");
+//            while (rs.next()) {
+//                for (int i = 1; i <= cols; i++) {
+//                    String value = rs.getString(i);
+//                    print(value + "\t");
+//                }
+//                println("");
+//            }
+//        }
+//
+//        try {
+//            statement.close();
+//        } catch (Exception e) {
+//            // Ignore to workaround a bug in Jakarta DBCP
+//        }
+//    }
 
     private String getDelimiter() {
         return delimiter;
     }
 
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    private void print(Object o) {
+    private void print(final Object o) {
         if (logWriter != null) {
             System.out.print(o);
         }
     }
 
-    private void println(Object o) {
+    private void println(final Object o) {
         if (logWriter != null) {
             logWriter.println(o);
         }
     }
 
-    private void printlnError(Object o) {
+    private void printlnError(final Object o) {
         if (errorLogWriter != null) {
             errorLogWriter.println(o);
         }

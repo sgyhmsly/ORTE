@@ -14,7 +14,7 @@ public class MySqlStepTest
     @Test
     public void execute() throws Exception
     {
-        MySqlStep ostep = new MySqlStep(new File("d:\\project\\ORTE\\ORTEChoiceRes\\03_check_request_from_choiceres_to_crs.sql"));
+        final MySqlStep ostep = new MySqlStep(new File("d:\\project\\ORTE\\ORTEChoiceRes\\03_check_request_from_choiceres_to_crs.sql"));
         ostep.execute();
     }
 

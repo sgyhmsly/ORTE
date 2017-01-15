@@ -2,8 +2,7 @@ package CommonUtil;//NOPMD
 
 import java.io.*;
 import org.mozilla.universalchardet.UniversalDetector;
-import java.io.FileInputStream;
-import java.io.IOException;
+
 
 
 

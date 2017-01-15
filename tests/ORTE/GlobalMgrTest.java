@@ -14,7 +14,7 @@ public class GlobalMgrTest
     @Test
     public void importPropertyFile() throws Exception
     {
-        GlobalMgr oMgr = GlobalMgr.getInstance();
+        final GlobalMgr oMgr = GlobalMgr.getInstance();
         oMgr.importPropertyFile(new File("d:\\Project\\ORTE\\ORTEChoiceRes\\project.json"));
     }
 
