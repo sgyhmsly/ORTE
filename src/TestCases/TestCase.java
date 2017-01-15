@@ -1,20 +1,24 @@
 package TestCases;
 
+import ORTEExceptions.StepFileNotNullException;
 import ORTEExceptions.TestGroupException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
  * Created by JJMM on 2017/1/14.
  */
-public class TestCase implements TestComponent
+public class TestCase extends TestComponent
 {
     private Vector<TestComponent> setupSteps;
     private Vector<TestComponent> runSteps;
     private Vector<TestComponent> assertSteps;
 
-    public TestCase()
+    public TestCase(File caseName) throws StepFileNotNullException,FileNotFoundException
     {
+        super(caseName);
         setupSteps = new Vector<>();
         runSteps = new Vector<>();
         assertSteps = new Vector<>();
@@ -35,18 +39,27 @@ public class TestCase implements TestComponent
     @Override
     public StepPath getStepPathType()
     {
-        return null;
+        return StepPath.GroupFolder;
     }
 
     @Override
     public void execute() throws Exception
     {
-        for (TestComponent setupStep:setupSteps)
-            setupStep.execute();
-        for (TestComponent runStep:runSteps)
-            runStep.execute();
-        for (TestComponent assertStep:assertSteps)
-            assertStep.execute();
+
+        try
+        {
+            for (TestComponent setupStep:setupSteps)
+                setupStep.execute();
+            for (TestComponent runStep:runSteps)
+                runStep.execute();
+            for (TestComponent assertStep:assertSteps)
+                assertStep.execute();
+        } catch (Exception e)
+        {
+            setExecuteResult(false);
+            throw e;
+        }
+
     }
 
     @Override
@@ -82,5 +95,6 @@ public class TestCase implements TestComponent
         testSteps.add(assertSteps);
         return testSteps;
     }
+
 
 }

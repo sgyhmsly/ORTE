@@ -10,7 +10,7 @@ import ORTEExceptions.StepFileNotNullException;
 /**
  * Created by DT173 on 2016/12/28.
  */
-public abstract class AbstractStep  extends  TestElement implements TestComponent
+public abstract class AbstractStep  extends  TestComponent
 {
 
     AbstractStep(final File stepFile) throws StepFileNotNullException,FileNotFoundException
@@ -23,11 +23,11 @@ public abstract class AbstractStep  extends  TestElement implements TestComponen
     @Override
     public StepPath getStepPathType()
     {
-        if (testFile.getPath().toLowerCase().contains("runs"))
+        if (fileName.getPath().toLowerCase().contains("runs"))
             return StepPath.RunFolder;
-        else if(testFile.getPath().toLowerCase().contains("setups"))
+        else if(fileName.getPath().toLowerCase().contains("setups"))
             return StepPath.SetupFolder;
-        else if (testFile.getPath().toLowerCase().contains("asserts"))
+        else if (fileName.getPath().toLowerCase().contains("asserts"))
             return StepPath.AssertFolder;
         else
             throw new LeafStepException("Steps not in runs/setups/asserts folder");

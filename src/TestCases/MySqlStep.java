@@ -17,7 +17,7 @@ import static CommonUtil.GeneralFunc.ifEmpty;
 /**
  * Created by DT173 on 2016/12/29.
  */
-public class MySqlStep extends AbstractStep implements TestComponent
+public class MySqlStep extends AbstractStep
 {
 
     private String dbName;
@@ -76,14 +76,22 @@ public class MySqlStep extends AbstractStep implements TestComponent
           setExecuteResult(false);
           throw(e);
         }
-        RunSQLScriptFile(myConnection);
+
+        try
+        {
+            RunSQLScriptFile(myConnection);
+        } catch (IOException|SQLException e)
+        {
+            setExecuteResult(false);
+            throw(e);
+        }
 
     }
 
     private void RunSQLScriptFile(Connection myConnection)throws IOException,SQLException
     {
         ScriptRunner runner = new ScriptRunner(myConnection, true, true);
-        BufferedReader sqlReader = readFilesWithEncode(testFile);
+        BufferedReader sqlReader = readFilesWithEncode(fileName);
         runner.runScript(sqlReader);
     }
 

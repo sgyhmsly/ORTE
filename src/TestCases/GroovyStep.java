@@ -15,7 +15,7 @@ import java.net.URL;
 /**
  * Created by DT173 on 2016/12/28.
  */
-public class GroovyStep extends AbstractStep implements TestComponent
+public class GroovyStep extends AbstractStep
 {
     private final GroovyScriptEngine groovyEngine;
     private final Binding groovyVariables;
@@ -39,7 +39,7 @@ public class GroovyStep extends AbstractStep implements TestComponent
     {
         try
         {
-            groovyEngine.run(getTestName(), groovyVariables);
+            groovyEngine.run(getFileName(), groovyVariables);
         } catch (ResourceException|ScriptException e)
         {
             this.setExecuteResult(false);

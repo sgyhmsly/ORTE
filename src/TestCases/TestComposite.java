@@ -9,7 +9,7 @@ import java.util.Vector;
 /**
  * Created by JJMM on 2017/1/14.
  */
-public class TestComposite extends TestElement implements TestComponent
+public class TestComposite extends  TestComponent
 {
     protected Vector<TestComponent> components;
 
@@ -42,9 +42,17 @@ public class TestComposite extends TestElement implements TestComponent
     @Override
     public void execute() throws Exception
     {
-        for (TestComponent component:components)
+
+        try
         {
-            component.execute();
+            for (TestComponent component:components)
+            {
+                component.execute();
+            }
+        } catch (Exception e)
+        {
+            setExecuteResult(false);
+            throw e;
         }
     }
 

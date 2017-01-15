@@ -5,12 +5,12 @@ import ORTEExceptions.StepFileNotNullException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Vector;
+
 
 /**
  * Created by JJMM on 2017/1/14.
  */
-public class TestGroup extends TestComposite implements TestComponent
+public class TestGroup extends TestComposite
 {
 
     public TestGroup(File groupName)throws StepFileNotNullException,FileNotFoundException
@@ -35,11 +35,5 @@ public class TestGroup extends TestComposite implements TestComponent
             components.remove(tElement);
     }
 
-
-    @Override
-    public StepPath getStepPathType()
-    {
-        return StepPath.GroupFolder;
-    }
 
 }
