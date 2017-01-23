@@ -1,5 +1,6 @@
 package TestCases;
 
+import ORTEExceptions.AddElementException;
 import ORTEExceptions.StepFileNotNullException;
 import ORTEExceptions.TestGroupException;
 
@@ -36,11 +37,7 @@ public class TestCase extends TestComponent
 
     }
 
-    @Override
-    public StepPath getStepPathType()
-    {
-        return StepPath.GroupFolder;
-    }
+
 
     @Override
     public void execute() throws Exception
@@ -65,25 +62,32 @@ public class TestCase extends TestComponent
     @Override
     public void addTestElement(final TestComponent tElement)
     {
-        if (tElement.getStepPathType() == StepPath.SetupFolder)
-            setupSteps.add(tElement);
-        else if (tElement.getStepPathType()==StepPath.RunFolder)
-            runSteps.add(tElement);
-        else if (tElement.getStepPathType()==StepPath.AssertFolder)
-            assertSteps.add(tElement);
-        else if (tElement.getStepPathType()==StepPath.GroupFolder)
-            throw new TestGroupException("Test groups should not be added into test cases");
+        if (tElement instanceof AbstractStep)
+        {
+            AbstractStep abSteps = (AbstractStep)tElement;
+            if (abSteps.getStepPathType() == StepPath.SetupFolder)
+                setupSteps.add(tElement);
+            else if (abSteps.getStepPathType()==StepPath.RunFolder)
+                runSteps.add(tElement);
+            else if (abSteps.getStepPathType()==StepPath.AssertFolder)
+                assertSteps.add(tElement);
+        }
+        throw new AddElementException("Test cases should only add test Steps");
     }
 
     @Override
     public void removeTestElement(final TestComponent tElement)
     {
-        if (tElement.getStepPathType() == StepPath.SetupFolder)
-            setupSteps.remove(tElement);
-        else if (tElement.getStepPathType()==StepPath.RunFolder)
-            runSteps.remove(tElement);
-        else if (tElement.getStepPathType()==StepPath.AssertFolder)
-            assertSteps.remove(tElement);
+        if (tElement instanceof AbstractStep)
+        {
+            AbstractStep abSteps = (AbstractStep) tElement;
+            if (abSteps.getStepPathType() == StepPath.SetupFolder)
+                setupSteps.remove(tElement);
+            else if (abSteps.getStepPathType() == StepPath.RunFolder)
+                runSteps.remove(tElement);
+            else if (abSteps.getStepPathType() == StepPath.AssertFolder)
+                assertSteps.remove(tElement);
+        }
     }
 
     @Override

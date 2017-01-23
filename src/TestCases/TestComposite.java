@@ -1,5 +1,6 @@
 package TestCases;
 
+import ORTEExceptions.AddElementException;
 import ORTEExceptions.StepFileNotNullException;
 
 import java.io.File;
@@ -31,11 +32,6 @@ public class TestComposite extends  TestComponent
 
     }
 
-    @Override
-    public StepPath getStepPathType()
-    {
-        return StepPath.SetupFolder;
-    }
 
 
 
@@ -59,13 +55,20 @@ public class TestComposite extends  TestComponent
     @Override
     public void addTestElement(final TestComponent tElement)
     {
+        if (tElement instanceof AbstractStep)
+            throw new AddElementException("Steps must be added to Cases");
+        tElement.setParentComponent(this);
         components.add(tElement);
     }
 
     @Override
     public void removeTestElement(final TestComponent tElement)
     {
-        components.remove(tElement);
+        if (components.contains(tElement))
+        {
+            tElement.setParentComponent(null);
+            components.remove(tElement);
+        }
     }
 
     @Override

@@ -100,10 +100,10 @@ public class MySqlStep extends AbstractStep
     }
 
     private Connection generateConnection() throws ClassNotFoundException,SQLException,DbNameEmptyException {
-        final String jdbcDriver = GlobalMgr.getInstance().getJdbcDriver(dbName);
+        final String jdbcDriver = getRoot().getJdbcDriver(dbName);
         Class.forName(jdbcDriver);
-        final String jdbcUser = GlobalMgr.getInstance().getJdbcUser(dbName);
-        final String jdbcPassword = GlobalMgr.getInstance().getJdbcPassword(dbName);
+        final String jdbcUser = getRoot().getJdbcUser(dbName);
+        final String jdbcPassword = getRoot().getJdbcPassword(dbName);
         final MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(jdbcUser);
         dataSource.setPassword(jdbcPassword);

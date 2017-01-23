@@ -4,6 +4,7 @@ package TestCases;//NOPMD
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import ORTEExceptions.AddElementException;
 import ORTEExceptions.LeafStepException;
 import ORTEExceptions.StepFileNotNullException;
 
@@ -20,7 +21,7 @@ public abstract class AbstractStep  extends  TestComponent
 
     public abstract void execute() throws Exception;
 
-    @Override
+
     public StepPath getStepPathType()
     {
         if (fileName.getPath().toLowerCase().contains("runs"))
@@ -36,13 +37,13 @@ public abstract class AbstractStep  extends  TestComponent
     @Override
     public void addTestElement(final TestComponent tElement)
     {
-        throw new LeafStepException("Leaf Steps can not add nested steps");
+        throw new AddElementException("Leaf Steps can not add nested steps");
     }
 
     @Override
     public void removeTestElement(final TestComponent tElement)
     {
-        throw new LeafStepException("Leaf Steps can not remove nested steps");
+        ;
     }
 
     @Override

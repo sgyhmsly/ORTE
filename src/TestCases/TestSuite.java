@@ -15,21 +15,5 @@ public class TestSuite extends TestComposite
     {
         super(suiteName);
     }
-    @Override
-    public void addTestElement(final TestComponent tElement)
-    {
-        if (tElement instanceof AbstractStep)
-            throw new AddElementException("LeafStep can not be added into test group");
-        if (tElement instanceof TestCase|| tElement instanceof TestSuite)
-            components.add(tElement);
-    }
 
-    @Override
-    public void removeTestElement(final TestComponent tElement)
-    {
-        if (tElement instanceof AbstractStep)
-            return;
-        if (tElement instanceof TestCase||tElement instanceof TestSuite)
-            components.remove(tElement);
-    }
 }

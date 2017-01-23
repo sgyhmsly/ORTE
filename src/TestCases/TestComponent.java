@@ -1,5 +1,6 @@
 package TestCases;
 
+import ORTEExceptions.NoRootException;
 import ORTEExceptions.StepFileNotNullException;
 
 import java.io.File;
@@ -13,6 +14,8 @@ public abstract class TestComponent
 {
     private boolean ifSuccess;
     protected final File fileName;
+    private TestProject root;
+    private TestComponent parentComponent;
 
 
 
@@ -25,7 +28,7 @@ public abstract class TestComponent
     abstract void removeTestElement(TestComponent tElement);
     abstract Object getChildren();
 
-    abstract StepPath getStepPathType();
+
 
 
     public TestComponent(final File stepFile) throws StepFileNotNullException,FileNotFoundException
@@ -36,6 +39,37 @@ public abstract class TestComponent
             throw new FileNotFoundException("Step file not exist");
         this.fileName = stepFile;
         ifSuccess = true;
+        root = null;
+        parentComponent = null;
+    }
+
+    public TestProject getRoot()
+    {
+        if (root == null)
+        {
+
+            TestComponent oParent = this;
+            do
+            {
+                if (oParent instanceof TestProject)
+                    return (TestProject)oParent;
+                oParent = oParent.getParentComponent();
+            }
+            while(oParent !=null);
+            if (oParent == null)
+                throw new NoRootException("No Root Found");
+        }
+        return  root;
+    }
+
+    public TestComponent getParentComponent()
+    {
+        return parentComponent;
+    }
+
+    public void setParentComponent(TestComponent component)
+    {
+        parentComponent = component;
     }
 
 

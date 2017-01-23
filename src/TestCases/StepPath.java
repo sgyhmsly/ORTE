@@ -5,5 +5,5 @@ package TestCases;
  */
 public enum StepPath
 {
-    SetupFolder,RunFolder,AssertFolder,GroupFolder
+    SetupFolder,RunFolder,AssertFolder,TestCaseFolder,SuiteFolder,ProjectFolder
 }

@@ -34,6 +34,17 @@ public class TestProject extends TestSuite
         readJsonFiles(jsonPropertyFile);
     }
 
+    @Override
+    public TestProject getRoot()
+    {
+        return null;
+    }
+
+    @Override
+    public TestComponent getParentComponent()
+    {
+        return null;
+    }
 
     public Object getProjectFileProperty(final String propertyName)
     {
