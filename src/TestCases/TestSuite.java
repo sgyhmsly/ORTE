@@ -1,6 +1,6 @@
 package TestCases;
 
-import ORTEExceptions.LeafStepException;
+import ORTEExceptions.AddElementException;
 import ORTEExceptions.StepFileNotNullException;
 
 import java.io.File;
@@ -11,15 +11,15 @@ import java.io.FileNotFoundException;
  */
 public class TestSuite extends TestComposite
 {
-    public TestSuite(final File groupName)throws StepFileNotNullException,FileNotFoundException
+    public TestSuite(final File suiteName)throws StepFileNotNullException,FileNotFoundException
     {
-        super(groupName);
+        super(suiteName);
     }
     @Override
     public void addTestElement(final TestComponent tElement)
     {
         if (tElement instanceof AbstractStep)
-            throw new LeafStepException("LeafStep can not be added into test group");
+            throw new AddElementException("LeafStep can not be added into test group");
         if (tElement instanceof TestCase|| tElement instanceof TestSuite)
             components.add(tElement);
     }
