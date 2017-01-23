@@ -15,7 +15,7 @@ public class GlobalMgrTest
     public void importPropertyFile() throws Exception
     {
         final GlobalMgr oMgr = GlobalMgr.getInstance();
-        
+
     }
 
     @Test

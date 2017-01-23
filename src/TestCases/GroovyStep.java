@@ -29,6 +29,12 @@ public class GroovyStep extends AbstractStep
     {
         super(step);
         groovyVariables =new Binding();
+        String runPath = step.getParentFile().getParentFile().getPath()+"\\runs";
+        String assertPath = step.getParentFile().getParentFile().getPath()+"\\asserts";
+        String setupPath = step.getParentFile().getParentFile().getPath()+"\\setups";
+        groovyVariables.setProperty("runPath",runPath);
+        groovyVariables.setProperty("assertPath",assertPath);
+        groovyVariables.setProperty("setupPath",setupPath);
         fileURL = new URL[]{step.toURI().toURL()};
         groovyEngine = new GroovyScriptEngine(fileURL);
 
