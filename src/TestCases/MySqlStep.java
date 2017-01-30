@@ -4,9 +4,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import ORTE.GlobalMgr;
 import ORTEExceptions.DbNameEmptyException;
-import ORTEExceptions.StepFileNotNullException;
 import org.apache.commons.io.IOUtils;
 import ORTEExceptions.SqlPropertyFileException;
 
@@ -21,9 +19,9 @@ public class MySqlStep extends AbstractStep
 {
 
     private String dbName;
-    public MySqlStep(final File stepFile)throws StepFileNotNullException,SqlPropertyFileException,FileNotFoundException,IOException
+    public MySqlStep(final File stepFile,final TestCase testCase)throws SqlPropertyFileException,FileNotFoundException,IOException
     {
-        super(stepFile);
+        super(stepFile,testCase);
         final String sqlPropertyFilePath = stepFile.getParentFile().getPath()+"\\" + stepFile.getName().replaceFirst("\\d+_","")+".properties";
         final File dbPropertyFile = new File(sqlPropertyFilePath);
         if (!dbPropertyFile.exists())
@@ -95,7 +93,7 @@ public class MySqlStep extends AbstractStep
     private void RunSQLScriptFile(final Connection myConnection)throws IOException,SQLException
     {
         final ScriptRunner runner = new ScriptRunner(myConnection, true, true);
-        final BufferedReader sqlReader = readFilesWithEncode(fileName);
+        final BufferedReader sqlReader = readFilesWithEncode(stepFile);
         runner.runScript(sqlReader);
     }
 
@@ -111,6 +109,13 @@ public class MySqlStep extends AbstractStep
         return dataSource.getConnection();
     }
 
-
+    public void preExecute()
+    {
+        ;
+    }
+    public void afterExecute()
+    {
+        ;
+    }
 
 }

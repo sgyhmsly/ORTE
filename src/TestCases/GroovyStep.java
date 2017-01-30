@@ -1,6 +1,5 @@
 package TestCases;//NOPMD
 
-import ORTEExceptions.StepFileNotNullException;
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;
 import groovy.util.ResourceException;
@@ -25,9 +24,9 @@ public class GroovyStep extends AbstractStep
         return fileURL.clone();
     }
 
-    public GroovyStep(final File step) throws MalformedURLException, FileNotFoundException, StepFileNotNullException
+    public GroovyStep(final File step,final TestCase testCase) throws MalformedURLException, FileNotFoundException
     {
-        super(step);
+        super(step,testCase);
         groovyVariables =new Binding();
         String runPath = step.getParentFile().getParentFile().getPath()+"\\runs";
         String assertPath = step.getParentFile().getParentFile().getPath()+"\\asserts";
@@ -52,5 +51,14 @@ public class GroovyStep extends AbstractStep
             throw e;
         }
 
+    }
+
+    public void preExecute()
+    {
+        ;
+    }
+    public void afterExecute()
+    {
+        ;
     }
 }

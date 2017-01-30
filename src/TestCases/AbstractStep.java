@@ -4,56 +4,61 @@ package TestCases;//NOPMD
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import ORTEExceptions.AddElementException;
-import ORTEExceptions.LeafStepException;
-import ORTEExceptions.StepFileNotNullException;
-
 /**
  * Created by DT173 on 2016/12/28.
  */
-public abstract class AbstractStep  extends  TestComponent
+public abstract class AbstractStep implements IExcutable
 {
 
-    AbstractStep(final File stepFile) throws StepFileNotNullException,FileNotFoundException
+    private boolean ifSuccess;
+    protected final File stepFile;
+    private final TestCase testCase;
+
+    AbstractStep(final File stepFile,final TestCase testCase) throws FileNotFoundException
     {
-        super(stepFile);
+        if(stepFile == null)
+            throw new NullPointerException("Step file not be null");
+        if (testCase == null)
+            throw new NullPointerException("testCase should not be null");
+        if(!stepFile.exists())
+            throw new FileNotFoundException("Step file not exist");
+        this.testCase = testCase;
+        this.stepFile = stepFile;
+        ifSuccess = true;
     }
 
-    public abstract void execute() throws Exception;
-
-
-    public StepPath getStepPathType()
+    public TestCase getTestCase()
     {
-        if (fileName.getPath().toLowerCase().contains("runs"))
-            return StepPath.RunFolder;
-        else if(fileName.getPath().toLowerCase().contains("setups"))
-            return StepPath.SetupFolder;
-        else if (fileName.getPath().toLowerCase().contains("asserts"))
-            return StepPath.AssertFolder;
-        else
-            throw new LeafStepException("Steps not in runs/setups/asserts folder");
+        return testCase;
     }
 
-    @Override
-    public void addTestElement(final TestComponent tElement)
+    public TestProject getRoot()
     {
-        throw new AddElementException("Leaf Steps can not add nested steps");
+        return getTestCase().getTestSuite().getTestProject();
     }
 
-    @Override
-    public void removeTestElement(final TestComponent tElement)
+    public String getFileName()
     {
-        ;
+        return stepFile.getName();
     }
 
-    @Override
-    public Object getChildren()
+    public String getFilePath()
     {
-        return null;
+        return stepFile.getPath();
     }
 
-    public void preExecute()//NOPMD
-    {}//NOPMD
-    public void afterExecute()//NOPMD
-    {}//NOPMD
+    public boolean getExecuteResult()
+    {
+        return ifSuccess;
+    }
+
+
+    public void setExecuteResult(final boolean result)
+    {
+        ifSuccess = result;
+    }
+
+    abstract public void preExecute();
+    abstract public void afterExecute();
+
 }

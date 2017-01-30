@@ -1,8 +1,6 @@
 package TestCases;
 
-import ORTE.GlobalMgr;
 import ORTEExceptions.DbNameEmptyException;
-import ORTEExceptions.StepFileNotNullException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
@@ -10,6 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static CommonUtil.FileReaderWithEncoding.readJsonFiles;
 import static CommonUtil.GeneralFunc.ifEmpty;
@@ -17,34 +18,45 @@ import static CommonUtil.GeneralFunc.ifEmpty;
 /**
  * Created by JJMM on 2017/1/23.
  */
-public class TestProject extends TestSuite
+public class TestProject implements IExcutable
 {
-    public TestProject(final File projectName) throws StepFileNotNullException,FileNotFoundException
+    public TestProject(final File projectName) throws FileNotFoundException
     {
-        super(projectName);
+        if(projectName == null)
+            throw new NullPointerException("Project file not be null");
+        if(!projectName.exists())
+            throw new FileNotFoundException("Step file not exist");
+        projectFile = projectName;
         dbProperties = new TestProject.DbProperties();
         jsonObject = new JSONObject();
+        testSuites = new ArrayList<>();
     }
 
     private JSONObject jsonObject;
     private final TestProject.DbProperties dbProperties;
+    private final File projectFile;
+    private final List<TestSuite> testSuites;
+
+    public void addTestSuite(TestSuite testSuite)
+    {
+        if (testSuite!=null)
+            testSuites.add(testSuite);
+    }
+    public void removeTestSuite(TestSuite testSuite)
+    {
+        testSuites.remove(testSuite);
+    }
+
+    public List<TestSuite> getTestSuites()
+    {
+        return Collections.unmodifiableList(testSuites);
+    }
 
     public void importPropertyFile(final File jsonPropertyFile) throws IOException,ParseException,URISyntaxException
     {
         readJsonFiles(jsonPropertyFile);
     }
 
-    @Override
-    public TestProject getRoot()
-    {
-        return null;
-    }
-
-    @Override
-    public TestComponent getParentComponent()
-    {
-        return null;
-    }
 
     public Object getProjectFileProperty(final String propertyName)
     {
@@ -121,5 +133,14 @@ public class TestProject extends TestSuite
             return (String)getProjectFileProperty(queryString);
         }
 
+    }
+
+    @Override
+    public void execute() throws Exception
+    {
+        for (TestSuite testSuite:testSuites)
+        {
+            testSuite.execute();
+        }
     }
 }
