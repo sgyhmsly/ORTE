@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rad" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<ReservationNotificationRequest Token="9D210476-0AAF-4E2F-8634-9F948A4A6995:02">
+			<Contract ChannelCode="AGODA" SupplierCode="CHOICE"/>
+			<Reservation ReservationId="AGODA0004E63468E-6617-4643-B16E-E374939580B1" ChannelReservationId="107464822" Status="cancelled">
+				<Hotel Code="US4S97P8VT0"/>
+			</Reservation>
+		</ReservationNotificationRequest>
+	</soap11:Body>
+</soap11:Envelope>

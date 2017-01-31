@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rac" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<BookReservationRequest Token="7D4C8B1F-4CCB-4854-9DAD-BD61FC47C269:02" Action="commit">
+			<Contract ChannelCode="AGODA" SupplierCode="CHOICE"/>
+			<Reservation ChannelReservationId="102389289">
+				<Hotel Code="US4S97P8VT0">
+					<RoomStays>
+						<RoomStay RoomTypeCode="1KingBedNoSmoking" RatePlanCode="ChoiceBARNet15" RoomCount="1">
+							<GuestCount Adult="2" Child="0"/>
+							<DateSpan Start="2026-09-12" End="2026-09-13"/>
+						</RoomStay>
+					</RoomStays>
+				</Hotel>
+				<Customer>
+					<GivenName>JEFF</GivenName>
+					<Surname>WELLS</Surname>
+					<Telephone>2148625332</Telephone>
+					<Email>Fit@touricoholidays.com</Email>
+					<Properties>address=220 East Central Parkway, Suite 4000=32701.code=US=Altamonte Springs
+</Properties>
+				</Customer>
+				<Guests>
+					<Guest>
+						<GivenName>JEFF</GivenName>
+						<Surname>WELLS</Surname>
+						<Telephone>2148625332</Telephone>
+						<Email>Fit@touricoholidays.com</Email>
+						<Properties>address=220 East Central Parkway, Suite 4000=32701.code=US=Altamonte Springs
+</Properties>
+					</Guest>
+				</Guests>
+				<Guarantee>
+					<PaymentCard CardCode="AX" CardNumber="3702***********" ExpireDate="2021-08" HolderName="TouricoHolidays"/>
+				</Guarantee>
+				<AdditionalRequests>
+					<AdditionalRequest>Great view with balcony</AdditionalRequest>
+					<AdditionalRequest>BedType: TwinBeds</AdditionalRequest>
+				</AdditionalRequests>
+				<Properties>iata=96637800
+</Properties>
+			</Reservation>
+		</BookReservationRequest>
+	</soap11:Body>
+</soap11:Envelope>

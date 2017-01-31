@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rad" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<ReservationNotificationRequest Token="B8E75962-5627-482A-BBB8-18A2E679B345:02">
+			<Contract ChannelCode="AGODA" SupplierCode="CHOICE"/>
+			<Reservation ReservationId="AGODA0004E63468E-6617-4643-B16E-E374939580B1" ChannelReservationId="107464822" Status="confirmed">
+				<Hotel Code="US4S97P8VT0" Name="Rodeway Inn">
+					<RoomStays>
+						<RoomStay RoomTypeCode="1KingBedNoSmoking" RatePlanCode="ChoiceBARNet15" RoomCount="1">
+							<DateSpan Start="2026-09-27" End="2026-09-28"/>
+							<GuestCount Adult="2"/>
+							<Properties>rates[0].amount.before.tax=75.65
+</Properties>
+						</RoomStay>
+					</RoomStays>
+				</Hotel>
+				<Properties>iata=96637800
+</Properties>
+				<Customer>
+					<GivenName>GARY</GivenName>
+					<Surname>LINDSEY</Surname>
+					<Telephone>65-62484615</Telephone>
+					<Email>biz@agoda.com</Email>
+					<Properties>address=999/9 RAMA I RORD THE OFFICE,AT CENTRAL WORLD TOW 27TH FLR
+CustomerID=
+country.code=US
+city=BANGKOK
+Rescidency=
+Nationality=United States of America
+</Properties>
+				</Customer>
+				<Guests>
+					<Guest>
+						<GivenName>GARY</GivenName>
+						<Surname>LINDSEY</Surname>
+						<Properties>CustomerID=
+Rescidency=
+Nationality=United States of America
+</Properties>
+					</Guest>
+				</Guests>
+				<Guarantee>
+					<PaymentCard CardCode="MC" CardNumber="5533************" ExpireDate="2027-03" HolderName="Agoda Company Pte Ltd."/>
+				</Guarantee>
+				<Rate CurrencyCode="USD" AmountBeforeTax="75.65"/>
+			</Reservation>
+		</ReservationNotificationRequest>
+	</soap11:Body>
+</soap11:Envelope>

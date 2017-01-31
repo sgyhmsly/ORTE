@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rad" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<ReservationNotificationRequest Token="CC630B0D-1C5B-4350-9B61-687BC864D7A9:02">
+			<Contract ChannelCode="AGODA" SupplierCode="CHOICE"/>
+			<Reservation ReservationId="AGODA000ADCADF97-C710-4B5F-8EF1-7D319A4A5DE9" ChannelReservationId="106023430" Status="confirmed">
+				<Hotel Code="US4S97P8VT0" Name="Rodeway Inn">
+					<RoomStays>
+						<RoomStay RoomTypeCode="1KingBedNoSmoking" RatePlanCode="ChoiceBARNet15" RoomCount="1">
+							<DateSpan Start="2026-09-12" End="2026-09-13"/>
+							<GuestCount Adult="2"/>
+							<Properties>rates[0].amount.before.tax=96.90
+</Properties>
+						</RoomStay>
+					</RoomStays>
+				</Hotel>
+				<Properties>iata=96637800
+</Properties>
+				<Customer>
+					<GivenName>JOHN</GivenName>
+					<Surname>SEARS</Surname>
+					<Telephone>65-62484615</Telephone>
+					<Email>biz@agoda.com</Email>
+					<Properties>address=999/9 RAMA I RORD THE OFFICE,AT CENTRAL WORLD TOW 27TH FLR=.code=US=BANGKOK==United States of America
+</Properties>
+				</Customer>
+				<Guests>
+					<Guest>
+						<GivenName>JOHN</GivenName>
+						<Surname>SEARS</Surname>
+						<Properties>CustomerID===United States of America
+</Properties>
+					</Guest>
+				</Guests>
+				<AdditionalRequests>
+					<AdditionalRequest>Breakfast included;</AdditionalRequest>
+				</AdditionalRequests>
+				<Guarantee>
+					<PaymentCard CardCode="MC" CardNumber="5533************" ExpireDate="2027-02" HolderName="Agoda Company Pte Ltd."/>
+				</Guarantee>
+				<Rate CurrencyCode="USD" AmountBeforeTax="96.90"/>
+			</Reservation>
+		</ReservationNotificationRequest>
+	</soap11:Body>
+</soap11:Envelope>

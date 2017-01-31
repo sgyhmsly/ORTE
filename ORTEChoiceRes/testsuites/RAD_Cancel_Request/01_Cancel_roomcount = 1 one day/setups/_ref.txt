@@ -1,0 +1,10 @@
+01_clear.groovy
+02_clear_choiceres.sql
+03_clear_simulator.sql
+04_supplierprofile_channel_setup.http.properties
+05_supplierprofile_cooperatormapping_setup.http.properties
+06_supplierprofile_derbyMapping_setup.http.properties
+07_supplierprofile_hotel_setup.http.properties
+08_setup_simulator_groovy.http.properties
+09_restore_rad_xmlfiles.groovy
+10_restore_rad_cancel_xmlfiles.groovy

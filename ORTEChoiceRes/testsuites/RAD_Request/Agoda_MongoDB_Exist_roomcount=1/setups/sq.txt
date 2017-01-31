@@ -1,0 +1,9 @@
+ref	clear.groovy
+ref	clear_choiceres.sql
+ref	clear_simulator.sql
+ref	supplierprofile_channel_setup.http.properties
+ref	supplierprofile_cooperatormapping_setup.http.properties
+ref	supplierprofile_derbyMapping_setup.http.properties
+ref	supplierprofile_hotel_setup.http.properties
+ref	setup_simulator_groovy.http.properties
+ref	restore_rad_xmlfiles.groovy

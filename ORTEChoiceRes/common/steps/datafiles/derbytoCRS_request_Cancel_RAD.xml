@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<OTA_HotelResNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="5.000" EchoToken="8b87e3e5-0176-4153-b2ba-5470c911e207" TimeStamp="2026-09-27T01:39:36.012Z" ResStatus="Cancel">
+			<POS>
+				<Source>
+					<RequestorID Type="5" ID="AGODA"/>
+					<BookingChannel Type="2">
+						<CompanyName Code="DS"/>
+					</BookingChannel>
+				</Source>
+			</POS>
+			<HotelReservations>
+				<HotelReservation>
+					<UniqueID Type="22" ID="107464822"/>
+					<ResGlobalInfo>
+						<HotelReservationIDs>
+							<HotelReservationID ResID_Type="14" ResID_Value="48791190"/>
+						</HotelReservationIDs>
+					</ResGlobalInfo>
+				</HotelReservation>
+			</HotelReservations>
+		</OTA_HotelResNotifRQ>
+	</soap:Body>
+</soap:Envelope>

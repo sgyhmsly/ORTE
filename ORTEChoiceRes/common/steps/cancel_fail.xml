@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<ns1:OTA_HotelResNotifRS ResResponseType="Unsuccessful" EchoToken="2576c7b2-3e9f-4d53-bddc-0be1381c8f96" TimeStamp="2026-10-24T01:13:52.605Z" Version="5.0" xmlns:ns1="http://www.opentravel.org/OTA/2003/05">
+			<ns1:Errors>
+				<ns1:Error Type="12" Code="450">Reservation's cancel policy does not permit cancellation or modification - CxlResAction</ns1:Error>
+			</ns1:Errors>
+		</ns1:OTA_HotelResNotifRS>
+	</soap:Body>
+</soapenv:Envelope>

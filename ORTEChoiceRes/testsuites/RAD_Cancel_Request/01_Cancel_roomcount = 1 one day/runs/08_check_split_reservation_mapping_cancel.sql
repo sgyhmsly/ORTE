@@ -1,0 +1,1 @@
+select dswitch_reservation_id,split_reservation_id,status from split_reservation_mapping

@@ -1,0 +1,192 @@
+{
+  "method": "batchPut",
+  "params": [
+  "Hotel",
+  [{
+    "maxLos": "30",
+    "taxes": [
+      {
+        "tax1": "10.00",
+        "tax2": "0.00",
+        "endDate": "2026-07-13",
+        "startDate": "2011-01-24",
+        "taxType": null
+      }
+    ],
+    "timeZone": "-08:00",
+    "hotelCode": "CAD05",
+    "roomTypes": {
+      "DD": {
+        "roomTypeCode": "DD",
+        "maxOccupancy": "4"
+      },
+      "Q": {
+        "roomTypeCode": "Q",
+        "maxOccupancy": "2"
+      },
+      "NQ": {
+        "roomTypeCode": "NQ",
+        "maxOccupancy": "2"
+      },
+      "K": {
+        "roomTypeCode": "K",
+        "maxOccupancy": "2"
+      },
+      "NK": {
+        "roomTypeCode": "NK",
+        "maxOccupancy": "5"
+      },
+      "NDD": {
+        "roomTypeCode": "NDD",
+        "maxOccupancy": "4"
+      }
+    },
+    "ratePlans": {
+      "SITC": {
+        "policies": [],
+        "ratePlanCode": "SITC"
+      },
+      "SAPR2A": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "NCXL",
+            "guaranteePolicy": "PPD",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SAPR2A"
+      },
+      "LWTO": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "24H",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "LWTO"
+      },
+      "SP2BK": {
+        "policies": [],
+        "ratePlanCode": "SP2BK"
+      },
+      "SP3BK": {
+        "policies": [],
+        "ratePlanCode": "SP3BK"
+      },
+      "SBOOK": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "4P",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SBOOK"
+      },
+      "SMRC": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "4P",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SMRC"
+      },
+      "LNET": {
+        "policies": [],
+        "ratePlanCode": "LNET"
+      },
+      "SMRC2": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "4P",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SMRC2"
+      },
+      "LNET2": {
+        "policies": [],
+        "ratePlanCode": "LNET2"
+      },
+      "SP6BK": {
+        "policies": [],
+        "ratePlanCode": "SP6BK"
+      },
+      "SP4BK": {
+        "policies": [],
+        "ratePlanCode": "SP4BK"
+      },
+      "SP5BK": {
+        "policies": [],
+        "ratePlanCode": "SP5BK"
+      },
+      "SAPR1C": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "NCXL",
+            "guaranteePolicy": "PPD",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SAPR1C"
+      },
+      "SAPR2C": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "NCXL",
+            "guaranteePolicy": "PPD",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SAPR2C"
+      },
+      "SAPR1A": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "NCXL",
+            "guaranteePolicy": "PPD",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SAPR1A"
+      },
+      "SAGOD": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "24H",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SAGOD"
+      },
+      "SIT": {
+        "policies": [
+          {
+            "endDate": "2027-12-31",
+            "cancelPolicy": "4P",
+            "guaranteePolicy": "CCO",
+            "startDate": "2026-03-03"
+          }
+        ],
+        "ratePlanCode": "SIT"
+      }
+    },
+    "fax": "+510-521-8406"
+	}
+  ]
+  ]
+}

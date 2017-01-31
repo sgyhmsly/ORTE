@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rac" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<AvailabilityResponse Token="B229B106-34DD-407B-8418-6D6DEF4C7B54">
+			<Availability>
+				<Hotels>
+					<Hotel Code="US4R43QMJL0">
+						<RoomStays>
+							<RoomStay RoomTypeCode="1KingBedNoSmoking" RatePlanCode="ChoiceBARNet15Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="59.49" AmountAfterTax="65.91"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="1KingBedNoSmoking" RatePlanCode="ChoicePackage25Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="52.49" AmountAfterTax="58.16"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="1QueenBedNoSmoking" RatePlanCode="ChoiceBARNet15Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="55.24" AmountAfterTax="61.21"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="1QueenBedNoSmoking" RatePlanCode="ChoicePackage25Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="48.74" AmountAfterTax="54.00"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="2QueenBedsNoSmoking" RatePlanCode="ChoiceBARNet15Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="63.74" AmountAfterTax="70.62"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="2QueenBedsNoSmoking" RatePlanCode="ChoicePackage25Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="56.24" AmountAfterTax="62.31"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="1QueenBedSmoking" RatePlanCode="ChoiceBARNet15Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="55.24" AmountAfterTax="61.21"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+							<RoomStay RoomTypeCode="1QueenBedSmoking" RatePlanCode="ChoicePackage25Ctrip" RoomCount="3">
+								<GuestCount Adult="1" Child="0"/>
+								<DateSpan Start="2026-09-28" End="2026-09-30"/>
+								<RoomRates>
+									<RoomRate>
+										<DateSpan Start="2026-09-28" End="2026-09-30"/>
+										<Rate CurrencyCode="USD" AmountBeforeTax="48.74" AmountAfterTax="54.00"/>
+									</RoomRate>
+								</RoomRates>
+								<Properties>fee=TaxPercent:RNF10.80P_TaxAmount:RNF0.00.type=amount.before.tax.policy=4PM0D100P_100P.person.charge=0.person.rule=2,5.00.person.include=true
+</Properties>
+							</RoomStay>
+						</RoomStays>
+					</Hotel>
+				</Hotels>
+			</Availability>
+		</AvailabilityResponse>
+	</soap11:Body>
+</soap11:Envelope>

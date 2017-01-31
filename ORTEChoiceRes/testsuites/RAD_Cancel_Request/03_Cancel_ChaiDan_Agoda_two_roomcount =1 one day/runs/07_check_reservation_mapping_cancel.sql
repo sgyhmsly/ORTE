@@ -1,0 +1,1 @@
+select channel_reservation_id,cooperator_code,check_in_date,check_out_date,state,choice_hotel_code from reservation_mapping

@@ -30,11 +30,7 @@ public class MySqlStep extends AbstractStep
 
     }
 
-//    private void generateDbQueryString()
-//    {
-//        assert(!ifEmpty(dbName));
-//        GlobalMgr.getInstance().switchDBString(dbName);
-//    }
+
 
     private void extractDbNameFromPropertyFile(final File sqlPropertiesFile) throws FileNotFoundException,IOException,SqlPropertyFileException
     {

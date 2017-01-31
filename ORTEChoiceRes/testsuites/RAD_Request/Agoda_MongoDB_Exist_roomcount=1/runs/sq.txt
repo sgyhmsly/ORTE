@@ -1,0 +1,6 @@
+choiceres_rad_req.zip
+waitForProcess.groovy
+check_request_from_choiceres_to_crs.zip
+replace.replace.properties
+check_reservation_mapping.zip
+check_split_reservation_mapping.zip

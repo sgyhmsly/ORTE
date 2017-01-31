@@ -1,0 +1,180 @@
+{
+  "method": "batchPut",
+  "params": [
+    "DerbyMapping",
+    [{
+    "derbyCode": "US4S97P8VT0",
+    "cooperatorCode": "CAD05",
+    "derbyRoomTypes": {
+      "1QueenBedNoSmoking": {
+        "derbyCode": "1QueenBedNoSmoking",
+        "cooperatorCode": "NQ"
+      },
+      "2DoubleBedsSmoking": {
+        "derbyCode": "2DoubleBedsSmoking",
+        "cooperatorCode": "DD"
+      },
+      "1KingBedNoSmoking": {
+        "derbyCode": "1KingBedNoSmoking",
+        "cooperatorCode": "NK"
+      },
+      "1KingBedSmoking": {
+        "derbyCode": "1KingBedSmoking",
+        "cooperatorCode": "K"
+      },
+      "2DoubleBedsNoSmoking": {
+        "derbyCode": "2DoubleBedsNoSmoking",
+        "cooperatorCode": "NDD"
+      },
+      "1QueenBedSmoking": {
+        "derbyCode": "1QueenBedSmoking",
+        "cooperatorCode": "Q"
+      }
+    },
+    "derbyRatePlans": {
+      "ChoiceDiscount4NRetail": {
+        "derbyCode": "ChoiceDiscount4NRetail",
+        "cooperatorCode": "SP4BK"
+      },
+      "ChoiceDiscount5NRetail": {
+        "derbyCode": "ChoiceDiscount5NRetail",
+        "cooperatorCode": "SP5BK"
+      },
+      "ChoiceDiscount3NNet15": {
+        "derbyCode": "ChoiceDiscount3NNet15",
+        "cooperatorCode": "SP3AG"
+      },
+      "ChoiceAdvance2Net15": {
+        "derbyCode": "ChoiceAdvance2Net15",
+        "cooperatorCode": "SAPR2A"
+      },
+      "ChoiceDiscount3NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount3NNet15Ctrip",
+        "cooperatorCode": "SP3MC"
+      },
+      "ChoiceDiscount7NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount7NNet15Ctrip",
+        "cooperatorCode": "SP7MC"
+      },
+      "ChoiceDiscount8NNet15": {
+        "derbyCode": "ChoiceDiscount8NNet15",
+        "cooperatorCode": "SP8AG"
+      },
+      "ChoiceDiscount9NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount9NNet15Ctrip",
+        "cooperatorCode": "SP9MC"
+      },
+      "ChoiceAdvance1Net15": {
+        "derbyCode": "ChoiceAdvance1Net15",
+        "cooperatorCode": "SAPR1A"
+      },
+      "ChoiceAdvance4Net15Ctrip": {
+        "derbyCode": "ChoiceAdvance4Net15Ctrip",
+        "cooperatorCode": "SAPR2C"
+      },
+      "ChoiceDiscount5NNet15": {
+        "derbyCode": "ChoiceDiscount5NNet15",
+        "cooperatorCode": "SP5AG"
+      },
+      "ChoiceBARRetail": {
+        "derbyCode": "ChoiceBARRetail",
+        "cooperatorCode": "SBOOK"
+      },
+      "ChoiceDiscount4NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount4NNet15Ctrip",
+        "cooperatorCode": "SP4MC"
+      },
+      "ChoiceDiscount7NNet15": {
+        "derbyCode": "ChoiceDiscount7NNet15",
+        "cooperatorCode": "SP7AG"
+      },
+      "ChoicePackage25Ctrip": {
+        "derbyCode": "ChoicePackage25Ctrip",
+        "cooperatorCode": "SMRC2"
+      },
+      "ChoiceAdvance2Net15Ctrip": {
+        "derbyCode": "ChoiceAdvance2Net15Ctrip",
+        "cooperatorCode": "SAP2MC"
+      },
+      "ChoiceBARNet15Ctrip": {
+        "derbyCode": "ChoiceBARNet15Ctrip",
+        "cooperatorCode": "SMRC"
+      },
+      "ChoiceBARNet11": {
+        "derbyCode": "ChoiceBARNet11",
+        "cooperatorCode": "SWOTIF"
+      },
+      "ChoiceDiscount9NNet15": {
+        "derbyCode": "ChoiceDiscount9NNet15",
+        "cooperatorCode": "SP9AG"
+      },
+      "ChoiceDiscount2NNet15": {
+        "derbyCode": "ChoiceDiscount2NNet15",
+        "cooperatorCode": "SP2AG"
+      },
+      "ChoiceDiscount5NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount5NNet15Ctrip",
+        "cooperatorCode": "SP5MC"
+      },
+      "ChoiceBARNet15": {
+        "derbyCode": "ChoiceBARNet15",
+        "cooperatorCode": "SAGOD"
+      },
+      "ChoiceDiscount8NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount8NNet15Ctrip",
+        "cooperatorCode": "SP8MC"
+      },
+      "ChoiceDiscount1NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount1NNet15Ctrip",
+        "cooperatorCode": "SP1MC"
+      },
+      "ChoiceDiscount4NNet15": {
+        "derbyCode": "ChoiceDiscount4NNet15",
+        "cooperatorCode": "SP4AG"
+      },
+      "ChoiceAdvance3Net15Ctrip": {
+        "derbyCode": "ChoiceAdvance3Net15Ctrip",
+        "cooperatorCode": "SAPR1C"
+      },
+      "ChoiceDiscount2NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount2NNet15Ctrip",
+        "cooperatorCode": "SP2MC"
+      },
+      "ChoiceNonRefundableNet15": {
+        "derbyCode": "ChoiceNonRefundableNet15",
+        "cooperatorCode": "SAGODE"
+      },
+      "ChoiceAdvance1Net15Ctrip": {
+        "derbyCode": "ChoiceAdvance1Net15Ctrip",
+        "cooperatorCode": "SAP1MC"
+      },
+      "ChoiceDiscount1NNet15": {
+        "derbyCode": "ChoiceDiscount1NNet15",
+        "cooperatorCode": "SP1AG"
+      },
+      "ChoiceDiscount6NNet15Ctrip": {
+        "derbyCode": "ChoiceDiscount6NNet15Ctrip",
+        "cooperatorCode": "SP6MC"
+      },
+      "ChoiceDiscount2NRetail": {
+        "derbyCode": "ChoiceDiscount2NRetail",
+        "cooperatorCode": "SP2BK"
+      },
+      "ChoiceDiscount3NRetail": {
+        "derbyCode": "ChoiceDiscount3NRetail",
+        "cooperatorCode": "SP3BK"
+      },
+      "ChoiceDiscount6NRetail": {
+        "derbyCode": "ChoiceDiscount6NRetail",
+        "cooperatorCode": "SP6BK"
+      },
+      "ChoiceDiscount6NNet15": {
+        "derbyCode": "ChoiceDiscount6NNet15",
+        "cooperatorCode": "SP6AG"
+      }
+
+	}
+	}
+    ]
+  ]
+}

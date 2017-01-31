@@ -54,7 +54,7 @@ public class TestProject implements IExcutable
 
     public void importPropertyFile(final File jsonPropertyFile) throws IOException,ParseException,URISyntaxException
     {
-        readJsonFiles(jsonPropertyFile);
+        jsonObject = readJsonFiles(jsonPropertyFile);
     }
 
 

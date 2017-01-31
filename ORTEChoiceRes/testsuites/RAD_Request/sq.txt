@@ -1,0 +1,2 @@
+Agoda_MongoDB_Exist_roomcount=1
+ChaiDan_Agoda_one_roomcount = 2 one day

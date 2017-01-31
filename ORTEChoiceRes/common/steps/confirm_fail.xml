@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<ns1:OTA_HotelResNotifRS ResResponseType="Unsuccessful" EchoToken="3de59a38-360b-44f3-a891-f6ee9fc6df7e" TimeStamp="2026-01-23T00:15:30.902Z" Version="5.0" xmlns:ns1="http://www.opentravel.org/OTA/2003/05">
+			<ns1:Errors>
+				<ns1:Error Type="12" Code="49">Insufficient guarantee - CommitResAction</ns1:Error>
+			</ns1:Errors>
+		</ns1:OTA_HotelResNotifRS>
+	</soap:Body>
+</soapenv:Envelope>

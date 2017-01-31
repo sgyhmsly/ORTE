@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns="http://www.derbysoft.com/dswitch/rad" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap11:Body>
+		<ReservationNotificationResponse Token="9D210476-0AAF-4E2F-8634-9F948A4A6995:02">
+			<ReservationNotificationConfirmation SupplierReservationId="48791190">
+				<Properties>cancel.confirmation.id=951208810
+cancel.number=951208810
+</Properties>
+			</ReservationNotificationConfirmation>
+		</ReservationNotificationResponse>
+	</soap11:Body>
+</soap11:Envelope>

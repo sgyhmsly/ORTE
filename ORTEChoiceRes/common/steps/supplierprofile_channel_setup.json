@@ -1,0 +1,21 @@
+{
+	"method": "batchPut", 
+	"params": [
+        "Channel", 
+        [
+			{
+				"overPci" : "true",
+				"chargeFor" : "ChargeRoomTaxOnly",
+				"channelId" : "AGODA",
+				"channelCode" : "AGODA"
+			},
+			{
+			"channelId" : "CTRIP",
+			"splitType" : "SingleRoomStay",
+			"channelCode" : "CTRIP"
+			}
+
+            
+        ]
+    ]
+}

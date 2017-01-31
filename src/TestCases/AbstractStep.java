@@ -13,6 +13,7 @@ public abstract class AbstractStep implements IExcutable
     private boolean ifSuccess;
     protected final File stepFile;
     private final TestCase testCase;
+    protected final String setupPath,runPath,expectedResultsPath,actualResultsPath,clearPath,outputPath;
 
     AbstractStep(final File stepFile,final TestCase testCase) throws FileNotFoundException
     {
@@ -25,6 +26,13 @@ public abstract class AbstractStep implements IExcutable
         this.testCase = testCase;
         this.stepFile = stepFile;
         ifSuccess = true;
+
+        runPath = stepFile.getParentFile().getParentFile().getPath()+"\\runs";
+        expectedResultsPath = stepFile.getParentFile().getParentFile().getPath()+"\\expectedResults";
+        actualResultsPath = stepFile.getParentFile().getParentFile().getPath()+"\\actualResults";
+        setupPath = stepFile.getParentFile().getParentFile().getPath()+"\\setups";
+        clearPath = stepFile.getParentFile().getParentFile().getPath()+"\\clears";
+        outputPath= stepFile.getParentFile().getParentFile().getPath()+"\\outputs";
     }
 
     public TestCase getTestCase()

@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<ns1:OTA_HotelResNotifRS ResResponseType="Cancelled" EchoToken="8b87e3e5-0176-4153-b2ba-5470c911e207" TimeStamp="2026-09-27T01:39:36.012Z" Version="5.0" xmlns:ns1="http://www.opentravel.org/OTA/2003/05">
+			<ns1:Success/>
+			<ns1:HotelReservations>
+				<ns1:HotelReservation ResStatus="Cancelled">
+					<ns1:UniqueID ID_Context="22" ID="107464822"/>
+					<ns1:ResGlobalInfo>
+						<ns1:HotelReservationIDs>
+							<ns1:HotelReservationID ResID_Type="14" ResID_Value="46194008"/>
+							<ns1:HotelReservationID ResID_Type="22" ResID_Value="107464822"/>
+							<ns1:HotelReservationID ResID_Type="15" ResID_Value="951208810" ResID_Source="Choice" ResID_SourceContext="CRS" CancellationDate="2026-09-27T01:39:36.920Z"/>
+						</ns1:HotelReservationIDs>
+					</ns1:ResGlobalInfo>
+				</ns1:HotelReservation>
+			</ns1:HotelReservations>
+		</ns1:OTA_HotelResNotifRS>
+	</soap:Body>
+</soapenv:Envelope>
