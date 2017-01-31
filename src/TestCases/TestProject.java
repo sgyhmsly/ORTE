@@ -63,22 +63,22 @@ public class TestProject implements IExcutable
         return jsonObject.get(propertyName);
     }
 
-    public String getJdbcDriver(final String dbName)throws DbNameEmptyException
+    public String getJdbcDriver(final String dbName)
     {
         return dbProperties.getJdbcDriver(dbName);
     }
 
-    public String getJdbcURL(final String dbName)throws DbNameEmptyException
+    public String getJdbcURL(final String dbName)
     {
         return dbProperties.getJdbcURL(dbName);
     }
 
-    public String getJdbcUser(final String dbName)throws DbNameEmptyException
+    public String getJdbcUser(final String dbName)
     {
         return dbProperties.getJdbcUser(dbName);
     }
 
-    public String getJdbcPassword(final String dbName)throws DbNameEmptyException
+    public String getJdbcPassword(final String dbName)
     {
         return dbProperties.getJdbcPassword(dbName);
     }
@@ -100,33 +100,33 @@ public class TestProject implements IExcutable
         }
 
 
-        private void validateDbName(final String dbName)throws DbNameEmptyException
+        private void validateDbName(final String dbName)
         {
             if(ifEmpty(dbName))
                 throw new DbNameEmptyException("Db name should not be empty");
         }
 
-        public String getJdbcDriver(final String dbName)throws DbNameEmptyException
+        public String getJdbcDriver(final String dbName)
         {
             validateDbName(dbName);
             final String queryString = dbName+jdbcDriverStr;
             return (String)getProjectFileProperty(queryString);
         }
 
-        public String getJdbcURL(final String dbName)throws DbNameEmptyException
+        public String getJdbcURL(final String dbName)
         {
             validateDbName(dbName);
             final String queryString = dbName+jdbcURLStr;
             return (String)getProjectFileProperty(queryString);
         }
 
-        public String getJdbcUser(final String dbName)throws DbNameEmptyException
+        public String getJdbcUser(final String dbName)
         {
             validateDbName(dbName);
             final String queryString = dbName+jdbcUserStr;
             return (String)getProjectFileProperty(queryString);
         }
-        public String getJdbcPassword(final String dbName)throws DbNameEmptyException
+        public String getJdbcPassword(final String dbName)
         {
             validateDbName(dbName);
             final String queryString = dbName+jdbcPasswordStr;

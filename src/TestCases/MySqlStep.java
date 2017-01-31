@@ -5,62 +5,55 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import ORTEExceptions.DbNameEmptyException;
+import ORTEExceptions.ZipFileStepException;
 import org.apache.commons.io.IOUtils;
 import ORTEExceptions.SqlPropertyFileException;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
-
+import static CommonUtil.FileReaderWithEncoding.readJsonFiles;
 /**
  * Created by DT173 on 2016/12/29.
  */
-public class MySqlStep extends AbstractStep
+public class MySqlStep extends CompositeStep
 {
 
     private String dbName;
-    public MySqlStep(final File stepFile,final TestCase testCase)throws SqlPropertyFileException,FileNotFoundException,IOException
+    private String actualFile;
+    public MySqlStep(final File stepFile,final TestCase testCase)throws FileNotFoundException,IOException, ZipFileStepException
     {
         super(stepFile,testCase);
-        final String sqlPropertyFilePath = stepFile.getParentFile().getPath()+"\\" + stepFile.getName().replaceFirst("\\d+_","")+".properties";
-        final File dbPropertyFile = new File(sqlPropertyFilePath);
-        if (!dbPropertyFile.exists())
-            throw new FileNotFoundException("Db property file not found");
-        extractDbNameFromPropertyFile(dbPropertyFile);
-
+        dbName = "";
     }
 
 
-
-    private void extractDbNameFromPropertyFile(final File sqlPropertiesFile) throws FileNotFoundException,IOException,SqlPropertyFileException
+    public String getDbName() throws IOException,ParseException
     {
-        final FileInputStream propertyStream = new FileInputStream(sqlPropertiesFile);
-        String[] parts = null;
-        try
+        if (dbName.equals(""))
         {
-            final String dataSource = IOUtils.toString(propertyStream);
-            parts = dataSource.split("=");
-            if((parts.length !=2)||(parts[0].equalsIgnoreCase("datasource")))
-            {
-                dbName = "";
-                throw new SqlPropertyFileException("Sql property file: invalid content");
-            }
-            else
-            {
-                dbName = parts[1];
-//                generateDbQueryString();
-            }
+            JSONObject jsonObject = readJsonFiles(executePropertyFile);
+            dbName = (String)jsonObject.get("datasource");
         }
-        finally
-        {
-            IOUtils.closeQuietly(propertyStream);
-
-        }
+        return dbName;
     }
+
+    public String getActualFile() throws IOException,ParseException
+    {
+        if (actualFile.equals(""))
+        {
+            JSONObject jsonObject = readJsonFiles(executePropertyFile);
+            actualFile = (String)jsonObject.get("output");
+        }
+        return actualFile;
+    }
+
 
 
     @Override
-    public void execute() throws ClassNotFoundException,SQLException,FileNotFoundException,IOException, DbNameEmptyException
+    public void execute() throws ClassNotFoundException,SQLException,FileNotFoundException,IOException
     {
         Connection myConnection = null;
         try {
@@ -93,7 +86,7 @@ public class MySqlStep extends AbstractStep
         runner.runScript(sqlReader);
     }
 
-    private Connection generateConnection() throws ClassNotFoundException,SQLException,DbNameEmptyException {
+    private Connection generateConnection() throws ClassNotFoundException,SQLException {
         final String jdbcDriver = getRoot().getJdbcDriver(dbName);
         Class.forName(jdbcDriver);
         final String jdbcUser = getRoot().getJdbcUser(dbName);

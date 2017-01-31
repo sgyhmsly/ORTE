@@ -1,10 +1,16 @@
 package CommonUtil;
 
+import ORTEExceptions.ZipFileStepException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import static CommonUtil.FileEncoding.getFileEncode;
 
@@ -31,6 +37,24 @@ public class FileReaderWithEncoding
         final JSONParser parser = new JSONParser();
         final BufferedReader buffReader = readFilesWithEncode(jsonFile);
         return (JSONObject)(parser.parse(buffReader));//NOPMD
+    }
+
+    public static List<File> readZipFiles(final File zipFileName) throws IOException,ZipFileStepException
+    {
+        ZipFile zipFile = new ZipFile(zipFileName);
+
+        Enumeration<? extends ZipEntry> entries = zipFile.entries();
+
+        List<File> filesInZip = new ArrayList<>();
+        while(entries.hasMoreElements())
+        {
+            ZipEntry entry = entries.nextElement();
+            String fileName = entry.getName();
+            File file = new File (fileName);
+            filesInZip.add(file);
+        }
+        zipFile.close();
+        return filesInZip;
     }
 
 }
