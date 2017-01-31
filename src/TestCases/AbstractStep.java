@@ -20,7 +20,7 @@ public abstract class AbstractStep implements IExcutable
         if(stepFile == null)
             throw new NullPointerException("Step file not be null");
         if (testCase == null)
-            throw new NullPointerException("testCase should not be null");
+            ;//throw new NullPointerException("testCase should not be null");
         if(!stepFile.exists())
             throw new FileNotFoundException("Step file not exist");
         this.testCase = testCase;

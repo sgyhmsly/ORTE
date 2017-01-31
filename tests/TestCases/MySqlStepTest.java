@@ -14,7 +14,7 @@ public class MySqlStepTest
     @Test
     public void execute() throws Exception
     {
-        MySqlStep oSqlStep = new MySqlStep(new File("d:\\project\\ORTE\\ORTEChoiceRes\\testsuites\\RAD_Request\\Agoda_MongoDB_Exist_roomcount=1\\runs\\choiceres_rad_req.zip"),null);
+        MySqlStep oSqlStep = new MySqlStep(new File("d:\\project\\ORTE\\ORTEChoiceRes\\testsuites\\RAD_Request\\Agoda_MongoDB_Exist_roomcount=1\\runs\\check_request_from_choiceres_to_crs.sql.zip"),null);
         oSqlStep.execute();
     }
 
