@@ -1,45 +1,37 @@
 package TestCases;//NOPMD
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import ORTEExceptions.DbNameEmptyException;
+
 import ORTEExceptions.ZipFileStepException;
-import org.apache.commons.io.IOUtils;
-import ORTEExceptions.SqlPropertyFileException;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import static CommonUtil.FileReaderWithEncoding.readFileSteamWithEncode;
-import static CommonUtil.FileReaderWithEncoding.readFilesWithEncode;
-import static CommonUtil.FileReaderWithEncoding.readJsonFiles;
+
 
 
 /**
  * Created by DT173 on 2016/12/29.
  */
-public class MySqlStep extends ZipStep
+public class MySqlStep
 {
 
     private String dbName;
     private String actualFile;
     public MySqlStep(final File stepFile,final TestCase testCase)throws FileNotFoundException,IOException, ZipFileStepException,ParseException
     {
-        super(stepFile,testCase);
-        if (!stepFile.getName().toLowerCase().endsWith(".sql.zip"))
-            throw new IllegalArgumentException("Sql Step Zip File must be .sql.zip");
-        if (!getExecuteFileName().toLowerCase().endsWith(".sql"))
-        {
-            throw new IllegalArgumentException(".sql File not exist in Sql Zip File");
-        }
-        JSONObject jsonObject = readJsonFiles(getExecutePropertyInputSteam());
-        dbName = (String)jsonObject.get("datasource");
+        //super(stepFile,testCase);
+//        if (!stepFile.getName().toLowerCase().endsWith(".sql.zip"))
+//            throw new IllegalArgumentException("Sql Step Zip File must be .sql.zip");
+//        if (!getExecuteFileName().toLowerCase().endsWith(".sql"))
+//        {
+//            throw new IllegalArgumentException(".sql File not exist in Sql Zip File");
+//        }
+//        JSONObject jsonObject = readJsonFiles(getExecutePropertyInputSteam());
+//        dbName = (String)jsonObject.get("datasource");
     }
 
 
@@ -51,57 +43,53 @@ public class MySqlStep extends ZipStep
 
     public String getActualFile() throws IOException,ParseException
     {
-        if (actualFile.equals(""))
-        {
-            JSONObject jsonObject = readJsonFiles(getExecutePropertyInputSteam());
-            actualFile = (String)jsonObject.get("output");
-        }
-        return actualFile;
+//        if (actualFile.equals(""))
+//        {
+//            JSONObject jsonObject = readJsonFiles(getExecutePropertyInputSteam());
+//            actualFile = (String)jsonObject.get("output");
+//        }
+//        return actualFile;
+        return null;
     }
 
 
 
-    @Override
+
     public void execute() throws ClassNotFoundException,SQLException,FileNotFoundException,IOException,ParseException
     {
-        Connection myConnection = null;
-        try {
-            myConnection = generateConnection();
-        }
-        catch (ClassNotFoundException|SQLException e) {
-          setExecuteResult(false);
-          throw(e);
-        }
-
-        try
-        {
-            RunSQLScriptFile(myConnection);
-        } catch (IOException|SQLException e)
-        {
-            setExecuteResult(false);
-            throw(e);
-        }
-        finally
-        {
-            myConnection.close();
-        }
+//        Connection myConnection = null;
+//        try {
+//            myConnection = generateConnection();
+//        }
+//        catch (ClassNotFoundException|SQLException e) {
+//          setExecuteResult(false);
+//          throw(e);
+//        }
+//
+//        try
+//        {
+//            RunSQLScriptFile(myConnection);
+//        } catch (IOException|SQLException e)
+//        {
+//            setExecuteResult(false);
+//            throw(e);
+//        }
+//        finally
+//        {
+//            myConnection.close();
+//        }
 
     }
 
     private void RunSQLScriptFile(final Connection myConnection)throws IOException,SQLException,ParseException
     {
-        // to be comment final ScriptRunner runner = new ScriptRunner(myConnection, true, true,new File(getActualFile()));
-        final ScriptRunner runner = new ScriptRunner(myConnection, true, true,new File("D:\\project\\ORTE\\ORTEChoiceRes\\testsuites\\RAD_Request\\Agoda_MongoDB_Exist_roomcount=1\\actualResults\\request_from_choiceres_to_crs.txt"));
-        final BufferedReader sqlReader = readFileSteamWithEncode(getExecuteInputSteam());
-        runner.runScript(sqlReader);
+
+//        final ScriptRunner runner = new ScriptRunner(myConnection, true, true,new File("D:\\project\\ORTE\\ORTEChoiceRes\\testsuites\\RAD_Request\\Agoda_MongoDB_Exist_roomcount=1\\actualResults\\request_from_choiceres_to_crs.txt"));
+//        final BufferedReader sqlReader = readFileSteamWithEncode(getExecuteInputSteam());
+//        runner.runScript(sqlReader);
     }
 
     private Connection generateConnection() throws ClassNotFoundException,SQLException {
-//        final String jdbcDriver = getRoot().getJdbcDriver(dbName);
-//        Class.forName(jdbcDriver);
-//        final String jdbcUser = getRoot().getJdbcUser(dbName);
-//        final String jdbcPassword = getRoot().getJdbcPassword(dbName);
-
 
         final String jdbcDriver = "com.mysql.jdbc.Driver";
         Class.forName(jdbcDriver);
